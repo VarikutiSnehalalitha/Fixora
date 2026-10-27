@@ -123,8 +123,8 @@ export default function HomePage() {
                   <Button
                     variant="emergency"
                     size="lg"
-                    leftIcon={<AlertTriangle className="w-5 h-5" />}
-                    className="emergency-pulse shadow-rose-900/40 text-base"
+                    leftIcon={<Zap className="w-5 h-5 fill-white" />}
+                    className="emergency-pulse shadow-red-950/40 text-base"
                   >
                     Emergency Assistance Now
                   </Button>
@@ -167,8 +167,8 @@ export default function HomePage() {
                     <h3 className="font-extrabold text-lg text-slate-900">Immediate Request</h3>
                     <p className="text-xs text-slate-500">Select what is required right now</p>
                   </div>
-                  <span className="bg-rose-100 text-rose-700 text-xs font-bold px-2.5 py-1 rounded-full flex items-center gap-1">
-                    <Zap className="w-3.5 h-3.5 fill-rose-600" /> 24/7 Available
+                  <span className="bg-red-900 text-white text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1 shadow-sm">
+                    <Zap className="w-3.5 h-3.5 fill-white text-white" /> 24/7 Rapid Rescue
                   </span>
                 </div>
 
@@ -208,13 +208,13 @@ export default function HomePage() {
 
                   <Link
                     href="/emergency"
-                    className="p-4 rounded-2xl border border-rose-200 bg-rose-50/40 hover:bg-rose-100/60 transition-all text-left group"
+                    className="p-4 rounded-2xl border border-red-800 bg-gradient-to-br from-red-900 via-red-950 to-slate-950 text-white hover:shadow-lg transition-all text-left group"
                   >
-                    <div className="w-10 h-10 rounded-xl bg-rose-600 text-white flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                      <AlertTriangle className="w-5 h-5" />
+                    <div className="w-10 h-10 rounded-xl bg-white/20 text-white flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                      <Zap className="w-5 h-5 fill-white" />
                     </div>
-                    <div className="font-bold text-sm text-rose-900">Stranded SOS</div>
-                    <div className="text-xs text-rose-700 mt-0.5">Instant GPS Dispatch</div>
+                    <div className="font-bold text-sm text-white">Stranded SOS</div>
+                    <div className="text-xs text-red-200 mt-0.5">Instant GPS Dispatch</div>
                   </Link>
                 </div>
 
@@ -237,11 +237,11 @@ export default function HomePage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 relative z-20">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <Card hoverEffect className="p-5 flex items-center gap-4 bg-white shadow-lg border-slate-100">
-            <div className="w-12 h-12 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center shrink-0">
-              <Zap className="w-6 h-6" />
+            <div className="w-12 h-12 rounded-2xl bg-red-50 text-red-800 flex items-center justify-center shrink-0">
+              <Zap className="w-6 h-6 fill-red-800" />
             </div>
             <div>
-              <div className="text-xs font-semibold text-rose-600 uppercase tracking-wide">Battery Boost</div>
+              <div className="text-xs font-bold text-red-800 uppercase tracking-wide">Battery Boost</div>
               <div className="text-sm font-bold text-slate-900">Instant Jump-Start</div>
               <div className="text-xs text-slate-500">From ₹349</div>
             </div>

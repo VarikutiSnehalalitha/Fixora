@@ -14,8 +14,8 @@ import {
   Menu,
   X,
   ChevronDown,
-  LogOut,
-  Layers
+  Layers,
+  Zap
 } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { fixNowStore } from '@/lib/store';
@@ -75,7 +75,7 @@ export const Navbar: React.FC = () => {
       {/* Top emergency announcement bar */}
       <div className="bg-slate-900 text-white text-xs py-1.5 px-4 flex items-center justify-between">
         <div className="flex items-center gap-2 mx-auto sm:mx-0">
-          <span className="flex h-2 w-2 rounded-full bg-emergency-500 animate-pulse"></span>
+          <span className="flex h-2 w-2 rounded-full bg-red-500 animate-pulse"></span>
           <span className="font-medium text-slate-200">
             24/7 Nationwide Rapid Roadside & Home Repair Dispatch
           </span>
@@ -145,7 +145,7 @@ export const Navbar: React.FC = () => {
                   onClick={() => handleRoleSwitch('admin')}
                   className="w-full text-left px-3 py-2 text-xs hover:bg-slate-50 flex items-center gap-2 border-t border-slate-100"
                 >
-                  <ShieldCheck className="w-3.5 h-3.5 text-rose-600" />
+                  <ShieldCheck className="w-3.5 h-3.5 text-red-700" />
                   <div>
                     <div className="font-semibold text-slate-800">System Administrator</div>
                     <div className="text-[10px] text-slate-500">Verifications & Analytics</div>
@@ -168,7 +168,7 @@ export const Navbar: React.FC = () => {
             <div>
               <div className="text-xl font-extrabold tracking-tight text-slate-900 flex items-center gap-1">
                 <span>FixNow</span>
-                <span className="text-xs bg-emergency-600 text-white font-bold px-1.5 py-0.5 rounded-md">
+                <span className="text-xs bg-red-800 text-white font-bold px-1.5 py-0.5 rounded-md tracking-wider">
                   24/7
                 </span>
               </div>
@@ -182,9 +182,9 @@ export const Navbar: React.FC = () => {
           <nav className="hidden lg:flex items-center gap-6 text-sm font-semibold text-slate-700">
             <Link
               href="/emergency"
-              className="flex items-center gap-1.5 text-emergency-600 hover:text-emergency-700 font-bold px-3 py-1.5 rounded-lg hover:bg-emergency-50 transition-colors"
+              className="flex items-center gap-1.5 text-red-800 hover:text-red-900 font-bold px-3 py-1.5 rounded-lg hover:bg-red-50 transition-colors"
             >
-              <AlertTriangle className="w-4 h-4 animate-bounce" />
+              <Zap className="w-4 h-4 fill-red-700 text-red-700" />
               <span>Emergency Help</span>
             </Link>
             <Link
@@ -228,7 +228,7 @@ export const Navbar: React.FC = () => {
               <Button
                 variant="emergency"
                 size="sm"
-                leftIcon={<AlertTriangle className="w-4 h-4" />}
+                leftIcon={<Zap className="w-4 h-4 fill-white" />}
                 className="emergency-pulse"
               >
                 Instant SOS
@@ -239,8 +239,8 @@ export const Navbar: React.FC = () => {
           {/* Mobile hamburger */}
           <div className="lg:hidden flex items-center gap-2">
             <Link href="/emergency">
-              <button className="bg-emergency-600 text-white p-2 rounded-lg text-xs font-bold flex items-center gap-1">
-                <AlertTriangle className="w-4 h-4" />
+              <button className="bg-red-800 text-white p-2 rounded-lg text-xs font-bold flex items-center gap-1">
+                <Zap className="w-4 h-4 fill-white" />
                 <span>SOS</span>
               </button>
             </Link>
@@ -283,10 +283,10 @@ export const Navbar: React.FC = () => {
             <Link
               href="/emergency"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="p-2.5 rounded-lg bg-emergency-50 text-emergency-700 font-bold flex items-center gap-2"
+              className="p-2.5 rounded-lg bg-red-50 text-red-900 border border-red-200 font-bold flex items-center gap-2"
             >
-              <AlertTriangle className="w-4 h-4" />
-              <span>Emergency Help (Instant 1-Click)</span>
+              <Zap className="w-4 h-4 text-red-700" />
+              <span>Emergency Help (Instant SOS)</span>
             </Link>
             <Link
               href="/services/vehicle"

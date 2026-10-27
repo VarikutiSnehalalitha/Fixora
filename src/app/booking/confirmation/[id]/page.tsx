@@ -86,12 +86,12 @@ export default function BookingConfirmationPage() {
           </div>
 
           {/* Handover OTP reminder */}
-          <div className="p-3 bg-rose-50 rounded-xl border border-rose-100 flex items-center justify-between text-xs">
+          <div className="p-4 bg-slate-900 text-white rounded-2xl border border-slate-800 flex items-center justify-between text-xs shadow-sm">
             <div>
-              <div className="font-bold text-rose-900">Arrival Verification Code</div>
-              <div className="text-[11px] text-rose-700">Provide this to the technician upon arrival</div>
+              <div className="font-bold text-white text-sm">Arrival Verification Code</div>
+              <div className="text-[11px] text-slate-400">Provide this to the technician upon physical arrival</div>
             </div>
-            <div className="text-lg font-black font-mono text-rose-700 bg-white px-2.5 py-1 rounded-lg border border-rose-200">
+            <div className="text-xl font-black font-mono text-amber-400 bg-slate-800 px-3 py-1.5 rounded-xl border border-slate-700">
               {booking.arrival_otp}
             </div>
           </div>

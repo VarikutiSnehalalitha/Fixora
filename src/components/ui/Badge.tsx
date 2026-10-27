@@ -51,8 +51,8 @@ export const Badge: React.FC<BadgeProps> = ({
   const variantStyles = {
     default: 'bg-slate-100 text-slate-800 border-slate-200',
     success: 'bg-emerald-50 text-emerald-800 border-emerald-200',
-    warning: 'bg-amber-50 text-amber-800 border-amber-200',
-    emergency: 'bg-rose-50 text-rose-800 border-rose-200',
+    warning: 'bg-amber-50 text-amber-900 border-amber-300', // Warning is clearly amber/gold
+    emergency: 'bg-red-900 text-white border-red-800 shadow-sm font-bold', // Authoritative rescue crimson, not warning-like
     info: 'bg-blue-50 text-blue-800 border-blue-200',
     neutral: 'bg-slate-100 text-slate-700 border-slate-300'
   };
@@ -68,7 +68,7 @@ export const Badge: React.FC<BadgeProps> = ({
     <span
       className={`inline-flex items-center gap-1.5 rounded-full border ${variantStyles[finalVariant]} ${sizeStyles[size]} ${className}`}
     >
-      <span className="w-1.5 h-1.5 rounded-full bg-current opacity-70"></span>
+      <span className="w-1.5 h-1.5 rounded-full bg-current opacity-80"></span>
       {displayText}
     </span>
   );

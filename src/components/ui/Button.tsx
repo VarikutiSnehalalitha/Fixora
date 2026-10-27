@@ -32,7 +32,7 @@ export const Button: React.FC<ButtonProps> = ({
     primary:
       'bg-brand-600 hover:bg-brand-700 text-white shadow-sm hover:shadow focus:ring-brand-500 active:scale-[0.99]',
     emergency:
-      'bg-emergency-600 hover:bg-emergency-700 text-white shadow-md hover:shadow-lg focus:ring-emergency-500 font-semibold active:scale-[0.99]',
+      'bg-gradient-to-r from-red-800 via-red-900 to-red-950 hover:from-red-900 hover:to-slate-950 text-white shadow-md hover:shadow-xl focus:ring-red-700 font-bold active:scale-[0.99] border border-red-700/70 tracking-wide',
     secondary:
       'bg-slate-100 hover:bg-slate-200 text-slate-900 focus:ring-slate-400',
     outline:
@@ -40,7 +40,7 @@ export const Button: React.FC<ButtonProps> = ({
     ghost:
       'text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:ring-slate-400',
     danger:
-      'bg-rose-50 text-rose-700 border border-rose-200 hover:bg-rose-100 focus:ring-rose-500'
+      'bg-red-50 text-red-800 border border-red-200 hover:bg-red-100 focus:ring-red-500'
   };
 
   return (

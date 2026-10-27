@@ -167,12 +167,12 @@ export default function FuelServicePage() {
                 }}
                 className={`p-5 rounded-2xl border text-left transition-all ${
                   fuelType === 'petrol'
-                    ? 'border-emergency-600 bg-emergency-50/70 shadow-sm'
+                    ? 'border-red-800 bg-red-50/40 shadow-sm'
                     : 'border-slate-200 bg-white hover:border-slate-300'
                 }`}
               >
                 <div className="flex items-center justify-between mb-2">
-                  <div className="w-10 h-10 rounded-xl bg-rose-100 text-emergency-700 flex items-center justify-center font-bold">
+                  <div className="w-10 h-10 rounded-xl bg-red-900 text-white flex items-center justify-center font-bold">
                     P
                   </div>
                   <Badge variant="emergency">Strict 5L Cap</Badge>
@@ -211,7 +211,7 @@ export default function FuelServicePage() {
                       onClick={() => setQuantityLiters(liters)}
                       className={`px-5 py-2.5 rounded-xl border text-sm font-bold transition-all ${
                         quantityLiters === liters
-                          ? 'border-emergency-600 bg-emergency-600 text-white'
+                          ? 'border-red-800 bg-red-800 text-white'
                           : 'border-slate-200 bg-white text-slate-800 hover:bg-slate-50'
                       }`}
                     >

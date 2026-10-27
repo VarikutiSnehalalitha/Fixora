@@ -135,19 +135,19 @@ function EmergencyContent() {
     <div className="min-h-screen bg-slate-50 py-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto space-y-8">
         {/* Urgent Header */}
-        <div className="bg-gradient-to-r from-emergency-600 to-rose-700 text-white rounded-3xl p-6 sm:p-8 shadow-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        <div className="bg-gradient-to-r from-slate-950 via-slate-900 to-red-950 text-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-red-800/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
           <div className="space-y-1">
-            <div className="inline-flex items-center gap-2 bg-white/20 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-rose-100">
-              <AlertTriangle className="w-4 h-4 text-white" />
+            <div className="inline-flex items-center gap-2 bg-red-900/60 border border-red-700/50 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-red-200">
+              <Zap className="w-4 h-4 fill-red-400 text-red-400" />
               <span>Priority SOS Roadside Channel</span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-black">24/7 Rapid Emergency Dispatch</h1>
-            <p className="text-rose-100 text-xs sm:text-sm">
+            <p className="text-slate-300 text-xs sm:text-sm">
               Average technician arrival: <strong>15–25 minutes</strong>. Direct GPS broadcast.
             </p>
           </div>
           <div className="bg-white/10 backdrop-blur-md px-4 py-3 rounded-2xl border border-white/20 text-center shrink-0">
-            <div className="text-[11px] text-rose-100 font-semibold">Toll-Free SOS Helpline</div>
+            <div className="text-[11px] text-red-300 font-semibold">Toll-Free SOS Helpline</div>
             <div className="text-lg font-black text-white">1800-FIX-NOW</div>
           </div>
         </div>
@@ -162,7 +162,7 @@ function EmergencyContent() {
           <button
             onClick={() => setStep(1)}
             className={`flex items-center gap-2 pb-2 border-b-2 transition-all ${
-              step === 1 ? 'border-emergency-600 text-emergency-600' : 'border-transparent text-slate-500'
+              step === 1 ? 'border-red-800 text-red-800' : 'border-transparent text-slate-500'
             }`}
           >
             <span className="w-6 h-6 rounded-full bg-slate-200 text-slate-800 flex items-center justify-center text-xs">1</span>
@@ -172,7 +172,7 @@ function EmergencyContent() {
           <button
             onClick={() => setStep(2)}
             className={`flex items-center gap-2 pb-2 border-b-2 transition-all ${
-              step === 2 ? 'border-emergency-600 text-emergency-600' : 'border-transparent text-slate-500'
+              step === 2 ? 'border-red-800 text-red-800' : 'border-transparent text-slate-500'
             }`}
           >
             <span className="w-6 h-6 rounded-full bg-slate-200 text-slate-800 flex items-center justify-center text-xs">2</span>
@@ -182,7 +182,7 @@ function EmergencyContent() {
           <button
             onClick={() => setStep(3)}
             className={`flex items-center gap-2 pb-2 border-b-2 transition-all ${
-              step === 3 ? 'border-emergency-600 text-emergency-600' : 'border-transparent text-slate-500'
+              step === 3 ? 'border-red-800 text-red-800' : 'border-transparent text-slate-500'
             }`}
           >
             <span className="w-6 h-6 rounded-full bg-slate-200 text-slate-800 flex items-center justify-center text-xs">3</span>
@@ -261,20 +261,20 @@ function EmergencyContent() {
                       onClick={() => setSelectedIssue(cat.id)}
                       className={`p-4 rounded-2xl border text-left transition-all flex items-start gap-3.5 ${
                         isSelected
-                          ? 'border-emergency-600 bg-emergency-50/60 shadow-sm'
+                          ? 'border-red-800 bg-red-50/40 shadow-sm'
                           : 'border-slate-200 bg-white hover:border-slate-300'
                       }`}
                     >
                       <div
                         className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 ${
-                          isSelected ? 'bg-emergency-600 text-white' : 'bg-slate-100 text-slate-600'
+                          isSelected ? 'bg-red-800 text-white' : 'bg-slate-100 text-slate-600'
                         }`}
                       >
                         <Wrench className="w-4 h-4" />
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center justify-between">
-                          <span className={`text-sm font-bold ${isSelected ? 'text-emergency-900' : 'text-slate-900'}`}>
+                          <span className={`text-sm font-bold ${isSelected ? 'text-red-950' : 'text-slate-900'}`}>
                             {cat.title}
                           </span>
                           <span className="text-xs font-extrabold text-slate-700">₹{cat.basePrice}</span>
@@ -456,8 +456,8 @@ function EmergencyContent() {
                 size="lg"
                 onClick={handleEmergencyDispatch}
                 isLoading={isSubmitting}
-                className="emergency-pulse shadow-lg shadow-rose-900/30"
-                leftIcon={<AlertTriangle className="w-5 h-5" />}
+                className="emergency-pulse shadow-xl shadow-red-950/40"
+                leftIcon={<Zap className="w-5 h-5 fill-white" />}
               >
                 Dispatch Nearest Verified Mechanic
               </Button>

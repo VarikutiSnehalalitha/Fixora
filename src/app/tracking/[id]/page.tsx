@@ -201,7 +201,7 @@ export default function TrackingPage() {
                   <div
                     className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-all ${
                       isCurrent
-                        ? 'bg-emergency-600 text-white ring-4 ring-emergency-100 scale-110'
+                        ? 'bg-red-800 text-white ring-4 ring-red-100 scale-110 shadow-sm'
                         : isPast
                         ? 'bg-emerald-600 text-white'
                         : 'bg-slate-200 text-slate-600'
@@ -211,7 +211,7 @@ export default function TrackingPage() {
                   </div>
                   <span
                     className={`text-[11px] font-semibold mt-2 ${
-                      isCurrent ? 'text-emergency-600 font-bold' : isPast ? 'text-slate-800' : 'text-slate-400'
+                      isCurrent ? 'text-red-900 font-bold' : isPast ? 'text-slate-800' : 'text-slate-400'
                     }`}
                   >
                     {s.label}
@@ -326,22 +326,22 @@ export default function TrackingPage() {
           {/* Right Column: Provider & OTP Details */}
           <div className="lg:col-span-4 space-y-6">
             {/* Arrival OTP Display Card */}
-            <div className="bg-gradient-to-br from-emergency-600 to-rose-700 text-white rounded-2xl p-6 shadow-lg space-y-3">
-              <div className="flex items-center justify-between text-xs text-rose-100 font-bold uppercase">
+            <div className="bg-gradient-to-br from-slate-950 via-slate-900 to-red-950 text-white rounded-2xl p-6 shadow-xl border border-red-800/60 space-y-3">
+              <div className="flex items-center justify-between text-xs text-red-200 font-bold uppercase tracking-wide">
                 <span>Arrival Verification Code</span>
-                <Shield className="w-4 h-4 text-white" />
+                <Shield className="w-4 h-4 text-emerald-400" />
               </div>
               <div className="text-center py-2">
-                <div className="text-4xl font-black tracking-widest font-mono">
+                <div className="text-4xl font-black tracking-widest font-mono text-white">
                   {booking.arrival_otp}
                 </div>
-                <div className="text-[11px] text-rose-100 mt-1">
+                <div className="text-[11px] text-slate-300 mt-1">
                   Share this 4-digit code ONLY when the technician physically arrives
                 </div>
               </div>
-              <div className="pt-2 border-t border-rose-500/50 flex items-center justify-between text-xs">
-                <span>Status:</span>
-                <span className="font-bold">
+              <div className="pt-2 border-t border-slate-800 flex items-center justify-between text-xs">
+                <span className="text-slate-400">Status:</span>
+                <span className="font-bold text-white">
                   {booking.is_arrival_verified ? '✓ Verified on Arrival' : 'Awaiting Arrival'}
                 </span>
               </div>

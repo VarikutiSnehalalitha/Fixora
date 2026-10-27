@@ -65,7 +65,7 @@ export const LiveMap: React.FC<LiveMapProps> = ({
       className: 'custom-customer-marker',
       html: `
         <div style="
-          background-color: #DC2626;
+          background-color: #991B1B;
           width: 28px;
           height: 28px;
           border-radius: 50%;

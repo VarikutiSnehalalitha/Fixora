@@ -13,7 +13,8 @@ import {
   Plus,
   MapPin,
   Calendar,
-  CreditCard
+  CreditCard,
+  Zap
 } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
@@ -53,7 +54,7 @@ export default function CustomerDashboardPage() {
 
           <div className="flex items-center gap-3">
             <Link href="/emergency">
-              <Button variant="emergency" size="sm" leftIcon={<AlertTriangle className="w-4 h-4" />}>
+              <Button variant="emergency" size="sm" leftIcon={<Zap className="w-4 h-4 fill-white" />}>
                 Instant SOS
               </Button>
             </Link>
@@ -69,13 +70,13 @@ export default function CustomerDashboardPage() {
         {activeBookings.length > 0 && (
           <div className="space-y-4">
             <h2 className="text-base font-extrabold text-slate-900 flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-emergency-600 animate-ping"></span>
+              <span className="w-2.5 h-2.5 rounded-full bg-red-700 animate-ping"></span>
               Live Active Bookings ({activeBookings.length})
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {activeBookings.map((bkg) => (
-                <Card key={bkg.id} className="p-5 border-l-4 border-l-emergency-600 space-y-3">
+                <Card key={bkg.id} className="p-5 border-l-4 border-l-red-800 space-y-3 bg-white">
                   <div className="flex items-center justify-between">
                     <span className="text-xs font-mono font-bold text-slate-500">{bkg.booking_number}</span>
                     <Badge status={bkg.status} />

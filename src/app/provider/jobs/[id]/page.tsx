@@ -220,9 +220,12 @@ export default function ProviderJobDetailPage() {
           {/* 2. If En Route -> Ask Customer for 4-digit Arrival OTP */}
           {booking.status === 'PROVIDER_EN_ROUTE' && (
             <form onSubmit={handleVerifyArrivalOtp} className="space-y-4">
-              <div className="p-4 bg-rose-50 rounded-2xl border border-rose-100 space-y-1">
-                <div className="text-xs font-bold text-rose-900">Arrived at Customer Location?</div>
-                <p className="text-xs text-rose-700">
+              <div className="p-4 bg-slate-900 text-white rounded-2xl border border-slate-800 space-y-1">
+                <div className="text-xs font-bold text-white flex items-center gap-1.5">
+                  <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                  <span>Arrived at Customer Location?</span>
+                </div>
+                <p className="text-xs text-slate-300">
                   Ask the customer for their 4-digit arrival verification code shown on their app screen.
                 </p>
               </div>
