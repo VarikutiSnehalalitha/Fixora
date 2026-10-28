@@ -34,49 +34,49 @@ export default function RegisterCustomerPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 py-16 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
+    <div className="min-h-screen bg-[#FAF9F6] py-16 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
       <div className="max-w-md w-full space-y-6">
         <div className="text-center space-y-2">
-          <Badge variant="info">Customer Account</Badge>
-          <h1 className="text-2xl font-black text-slate-900">Create Customer Profile</h1>
-          <p className="text-xs text-slate-500">Save vehicles, appliances, and trigger emergency SOS.</p>
+          <Badge variant="teal">Customer Account</Badge>
+          <h1 className="text-2xl font-black text-[#252B2B]">Create Customer Profile</h1>
+          <p className="text-xs text-[#687474]">Save vehicles, appliances, and trigger emergency SOS.</p>
         </div>
 
-        <Card className="p-6 bg-white space-y-4">
+        <Card className="p-6 bg-white border border-[#E6E8E5] space-y-4">
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">Full Legal Name</label>
+              <label className="block text-xs font-semibold text-[#252B2B] mb-1">Full Legal Name</label>
               <input
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Rahul Sharma"
                 required
-                className="w-full px-3.5 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl"
+                className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#E6E8E5] rounded-xl text-[#252B2B] focus:border-[#0F766E] focus:outline-none focus:ring-1 focus:ring-[#0F766E]"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">Mobile Number</label>
+              <label className="block text-xs font-semibold text-[#252B2B] mb-1">Mobile Number</label>
               <input
                 type="tel"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="+91 98765 43210"
                 required
-                className="w-full px-3.5 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl"
+                className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#E6E8E5] rounded-xl text-[#252B2B] focus:border-[#0F766E] focus:outline-none focus:ring-1 focus:ring-[#0F766E]"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">Email Address</label>
+              <label className="block text-xs font-semibold text-[#252B2B] mb-1">Email Address</label>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="rahul@example.com"
                 required
-                className="w-full px-3.5 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl"
+                className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#E6E8E5] rounded-xl text-[#252B2B] focus:border-[#0F766E] focus:outline-none focus:ring-1 focus:ring-[#0F766E]"
               />
             </div>
 
@@ -85,9 +85,9 @@ export default function RegisterCustomerPage() {
             </Button>
           </form>
 
-          <div className="text-center pt-2 text-xs text-slate-500">
+          <div className="text-center pt-2 text-xs text-[#687474]">
             Already registered?{' '}
-            <Link href="/login" className="font-bold text-brand-600 hover:underline">
+            <Link href="/login" className="font-bold text-[#0F766E] hover:underline">
               Sign In
             </Link>
           </div>

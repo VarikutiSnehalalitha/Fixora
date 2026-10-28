@@ -3,7 +3,7 @@ import { BookingStatus } from '@/types';
 
 export interface BadgeProps {
   children?: React.ReactNode;
-  variant?: 'default' | 'success' | 'warning' | 'emergency' | 'neutral' | 'info';
+  variant?: 'default' | 'success' | 'warning' | 'emergency' | 'neutral' | 'info' | 'teal' | 'danger';
   status?: BookingStatus;
   size?: 'sm' | 'md';
   className?: string;
@@ -49,17 +49,19 @@ export const Badge: React.FC<BadgeProps> = ({
   }
 
   const variantStyles = {
-    default: 'bg-slate-100 text-slate-800 border-slate-200',
-    success: 'bg-emerald-50 text-emerald-800 border-emerald-200',
-    warning: 'bg-amber-50 text-amber-900 border-amber-300', // Warning is clearly amber/gold
-    emergency: 'bg-red-900 text-white border-red-800 shadow-sm font-bold', // Authoritative rescue crimson, not warning-like
-    info: 'bg-blue-50 text-blue-800 border-blue-200',
-    neutral: 'bg-slate-100 text-slate-700 border-slate-300'
+    default: 'bg-[#FAF9F6] text-[#687474] border-[#E6E8E5]',
+    success: 'bg-[#EAF4EE] text-[#21845B] border-[#B8DEC9]',
+    warning: 'bg-[#FEF9EE] text-[#B47510] border-[#FBE2AC]',
+    emergency: 'bg-[#FEF9EE] text-[#D99119] border-[#FBE2AC]',
+    info: 'bg-[#EAF5F2] text-[#0F766E] border-[#A7D9CD]',
+    teal: 'bg-[#EAF5F2] text-[#0F766E] border-[#A7D9CD]',
+    danger: 'bg-[#FDF2F2] text-[#B91C35] border-[#F8D7DA]',
+    neutral: 'bg-[#FAF9F6] text-[#687474] border-[#E6E8E5]'
   };
 
   const sizeStyles = {
-    sm: 'text-xs px-2 py-0.5 font-medium',
-    md: 'text-xs px-2.5 py-1 font-semibold'
+    sm: 'text-xs px-2.5 py-0.5 font-medium',
+    md: 'text-xs px-3 py-1 font-semibold'
   };
 
   const displayText = children || (status ? status.replace(/_/g, ' ') : '');
@@ -68,7 +70,7 @@ export const Badge: React.FC<BadgeProps> = ({
     <span
       className={`inline-flex items-center gap-1.5 rounded-full border ${variantStyles[finalVariant]} ${sizeStyles[size]} ${className}`}
     >
-      <span className="w-1.5 h-1.5 rounded-full bg-current opacity-80"></span>
+      <span className="w-1.5 h-1.5 rounded-full bg-current opacity-75"></span>
       {displayText}
     </span>
   );

@@ -60,17 +60,17 @@ export const LiveMap: React.FC<LiveMapProps> = ({
       maxZoom: 19
     }).addTo(map);
 
-    // Custom Customer Icon
+    // Custom Customer Icon (sophisticated amber/teal marker)
     const customerIcon = L.divIcon({
       className: 'custom-customer-marker',
       html: `
         <div style="
-          background-color: #991B1B;
+          background-color: #D99119;
           width: 28px;
           height: 28px;
           border-radius: 50%;
           border: 3px solid #FFFFFF;
-          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -96,12 +96,12 @@ export const LiveMap: React.FC<LiveMapProps> = ({
         className: 'custom-provider-marker',
         html: `
           <div style="
-            background-color: #2563EB;
+            background-color: #0F766E;
             width: 32px;
             height: 32px;
             border-radius: 50%;
             border: 3px solid #FFFFFF;
-            box-shadow: 0 4px 8px -1px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 4px 8px -1px rgba(15, 118, 110, 0.35);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -118,18 +118,18 @@ export const LiveMap: React.FC<LiveMapProps> = ({
       const providerMarker = L.marker([providerCoords.lat, providerCoords.lng], {
         icon: providerIcon
       }).addTo(map);
-      providerMarker.bindPopup('<b>Assigned Technician</b><br/>En Route');
+      providerMarker.bindPopup('<b>Assigned Specialist</b><br/>En Route');
 
       if (showRoute) {
-        // Draw polyline between provider and customer
+        // Draw polyline between provider and customer in teal
         const latlngs: L.LatLngExpression[] = [
           [providerCoords.lat, providerCoords.lng],
           [customerCoords.lat, customerCoords.lng]
         ];
         const routeLine = L.polyline(latlngs, {
-          color: '#2563EB',
+          color: '#0F766E',
           weight: 4,
-          opacity: 0.8,
+          opacity: 0.85,
           dashArray: '8, 8'
         }).addTo(map);
 
@@ -143,12 +143,12 @@ export const LiveMap: React.FC<LiveMapProps> = ({
         className: 'pump-marker',
         html: `
           <div style="
-            background-color: #059669;
+            background-color: #21845B;
             width: 24px;
             height: 24px;
             border-radius: 50%;
             border: 2px solid #FFFFFF;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.15);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -164,7 +164,7 @@ export const LiveMap: React.FC<LiveMapProps> = ({
 
       L.marker([pump.lat, pump.lng], { icon: pumpIcon })
         .addTo(map)
-        .bindPopup(`<b>${pump.name}</b><br/>${pump.brand} (${pump.distanceKm} km away)<br/><span style="color:#059669;font-weight:600">PESO Authorized Retail Station</span>`);
+        .bindPopup(`<b>${pump.name}</b><br/>${pump.brand} (${pump.distanceKm} km away)<br/><span style="color:#21845B;font-weight:600">PESO Authorized Retail Station</span>`);
     });
 
     mapInstanceRef.current = map;
@@ -178,7 +178,7 @@ export const LiveMap: React.FC<LiveMapProps> = ({
   }, [customerCoords, providerCoords, nearbyPumps, zoom, showRoute]);
 
   return (
-    <div className="w-full rounded-2xl overflow-hidden border border-slate-200 shadow-inner relative z-0">
+    <div className="w-full rounded-2xl overflow-hidden border border-[#E6E8E5] shadow-inner relative z-0">
       <div ref={mapContainerRef} style={{ height, width: '100%' }} />
     </div>
   );

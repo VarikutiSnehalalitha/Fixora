@@ -3,13 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import {
-  DollarSign,
-  TrendingUp,
   Download,
-  ArrowLeft,
-  CheckCircle2,
-  Calendar,
-  CreditCard
+  ArrowLeft
 } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
@@ -30,17 +25,17 @@ export default function ProviderEarningsPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-slate-50 py-10 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#FAF9F6] text-[#252B2B] py-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto space-y-6">
-        <Link href="/provider/dashboard" className="text-xs font-bold text-slate-500 hover:text-slate-800 flex items-center gap-1">
+        <Link href="/provider/dashboard" className="text-xs font-bold text-[#687474] hover:text-[#0F766E] flex items-center gap-1 transition-colors">
           <ArrowLeft className="w-4 h-4" />
           <span>Back to Dashboard</span>
         </Link>
 
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <h1 className="text-2xl font-black text-slate-900">Earnings & Payout Statement</h1>
-            <p className="text-xs text-slate-500">Transparent commission accounting and bank settlement audit logs.</p>
+            <h1 className="text-2xl font-black text-[#252B2B]">Earnings & Payout Statement</h1>
+            <p className="text-xs text-[#687474]">Transparent commission accounting and bank settlement audit logs.</p>
           </div>
           <Button
             variant="outline"
@@ -54,34 +49,34 @@ export default function ProviderEarningsPage() {
 
         {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <Card className="p-5 space-y-1 bg-white">
-            <span className="text-xs font-bold text-slate-500 uppercase">Total Settled Payouts</span>
-            <div className="text-3xl font-black text-slate-900">₹{provider?.total_earnings.toLocaleString()}</div>
-            <p className="text-[11px] text-emerald-600 font-semibold">100% On-Time Weekly Bank Deposits</p>
+          <Card className="p-5 space-y-1 bg-white border-[#E6E8E5]">
+            <span className="text-xs font-bold text-[#687474] uppercase">Total Settled Payouts</span>
+            <div className="text-3xl font-black text-[#252B2B]">₹{provider?.total_earnings.toLocaleString()}</div>
+            <p className="text-[11px] text-[#21845B] font-semibold">100% On-Time Weekly Bank Deposits</p>
           </Card>
 
-          <Card className="p-5 space-y-1 bg-white">
-            <span className="text-xs font-bold text-slate-500 uppercase">Platform Commission (15%)</span>
-            <div className="text-3xl font-black text-slate-900">₹{Math.round((provider?.total_earnings || 0) * 0.15).toLocaleString()}</div>
-            <p className="text-[11px] text-slate-500">Disclosed in accordance with GST rules</p>
+          <Card className="p-5 space-y-1 bg-white border-[#E6E8E5]">
+            <span className="text-xs font-bold text-[#687474] uppercase">Platform Commission (15%)</span>
+            <div className="text-3xl font-black text-[#252B2B]">₹{Math.round((provider?.total_earnings || 0) * 0.15).toLocaleString()}</div>
+            <p className="text-[11px] text-[#687474]">Disclosed in accordance with GST rules</p>
           </Card>
 
-          <Card className="p-5 space-y-1 bg-white">
-            <span className="text-xs font-bold text-slate-500 uppercase">Registered Bank Account</span>
-            <div className="text-sm font-bold text-slate-900 font-mono">HDFC Bank •••• 9102</div>
-            <p className="text-[11px] text-slate-500">IFSC: HDFC0001234 (Verified)</p>
+          <Card className="p-5 space-y-1 bg-white border-[#E6E8E5]">
+            <span className="text-xs font-bold text-[#687474] uppercase">Registered Bank Account</span>
+            <div className="text-sm font-bold text-[#252B2B] font-mono">HDFC Bank •••• 9102</div>
+            <p className="text-[11px] text-[#687474]">IFSC: HDFC0001234 (Verified)</p>
           </Card>
         </div>
 
         {/* Payout History Table */}
-        <Card className="space-y-4">
-          <h3 className="font-bold text-sm text-slate-900 border-b border-slate-100 pb-3">
+        <Card className="space-y-4 bg-white border-[#E6E8E5]">
+          <h3 className="font-bold text-sm text-[#252B2B] border-b border-[#E6E8E5] pb-3">
             Recent Completed Service Settlements
           </h3>
 
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-slate-50 text-slate-500 uppercase border-b border-slate-100">
+              <thead className="bg-[#FAF9F6] text-[#687474] uppercase border-b border-[#E6E8E5]">
                 <tr>
                   <th className="py-2.5 px-3 font-semibold">Booking ID</th>
                   <th className="py-2.5 px-3 font-semibold">Service</th>
@@ -91,18 +86,16 @@ export default function ProviderEarningsPage() {
                   <th className="py-2.5 px-3 font-semibold">Status</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100">
+              <tbody className="divide-y divide-[#E6E8E5]">
                 {completedJobs.map((j) => (
-                  <tr key={j.id} className="hover:bg-slate-50/50">
-                    <td className="py-3 px-3 font-mono font-bold text-slate-700">{j.booking_number}</td>
-                    <td className="py-3 px-3 font-semibold text-slate-900">{j.issue_title}</td>
-                    <td className="py-3 px-3 font-semibold text-slate-800">₹{j.total_amount}</td>
-                    <td className="py-3 px-3 text-slate-500">₹{j.platform_commission}</td>
-                    <td className="py-3 px-3 font-bold text-emerald-700">₹{j.provider_payout}</td>
+                  <tr key={j.id} className="hover:bg-[#FAF9F6]">
+                    <td className="py-3 px-3 font-mono font-bold text-[#252B2B]">{j.booking_number}</td>
+                    <td className="py-3 px-3 font-semibold text-[#252B2B]">{j.issue_title}</td>
+                    <td className="py-3 px-3 font-semibold text-[#252B2B]">₹{j.total_amount}</td>
+                    <td className="py-3 px-3 text-[#687474]">₹{j.platform_commission}</td>
+                    <td className="py-3 px-3 font-black text-[#21845B]">₹{j.provider_payout}</td>
                     <td className="py-3 px-3">
-                      <span className="text-[10px] font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded">
-                        SETTLED
-                      </span>
+                      <Badge variant="success" size="sm">Settled</Badge>
                     </td>
                   </tr>
                 ))}

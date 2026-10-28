@@ -23,24 +23,24 @@ export const Button: React.FC<ButtonProps> = ({
     'inline-flex items-center justify-center font-medium rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed select-none';
 
   const sizeClasses = {
-    sm: 'text-xs px-3 py-1.5 gap-1.5',
+    sm: 'text-xs px-3.5 py-1.5 gap-1.5',
     md: 'text-sm px-4 py-2.5 gap-2',
     lg: 'text-base px-6 py-3.5 gap-2.5'
   };
 
   const variantClasses = {
     primary:
-      'bg-brand-600 hover:bg-brand-700 text-white shadow-sm hover:shadow focus:ring-brand-500 active:scale-[0.99]',
+      'bg-[#0F766E] hover:bg-[#0D645E] text-white shadow-sm hover:shadow focus:ring-[#0F766E] active:scale-[0.99]',
     emergency:
-      'bg-gradient-to-r from-red-800 via-red-900 to-red-950 hover:from-red-900 hover:to-slate-950 text-white shadow-md hover:shadow-xl focus:ring-red-700 font-bold active:scale-[0.99] border border-red-700/70 tracking-wide',
+      'bg-[#0F766E] hover:bg-[#0D645E] text-white shadow-sm hover:shadow focus:ring-[#0F766E] font-semibold active:scale-[0.99] border border-[#0F766E]/20',
     secondary:
-      'bg-slate-100 hover:bg-slate-200 text-slate-900 focus:ring-slate-400',
+      'bg-white hover:bg-[#FAF9F6] text-[#252B2B] border border-[#E6E8E5] hover:border-[#0F766E] hover:text-[#0F766E] focus:ring-[#0F766E]',
     outline:
-      'border border-slate-300 hover:bg-slate-50 text-slate-700 focus:ring-brand-500',
+      'border border-[#E6E8E5] bg-white hover:bg-[#FAF9F6] text-[#252B2B] hover:border-[#0F766E] hover:text-[#0F766E] focus:ring-[#0F766E]',
     ghost:
-      'text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:ring-slate-400',
+      'text-[#687474] hover:text-[#252B2B] hover:bg-[#FAF9F6] focus:ring-[#0F766E]',
     danger:
-      'bg-red-50 text-red-800 border border-red-200 hover:bg-red-100 focus:ring-red-500'
+      'bg-[#FDF2F4] text-[#B91C35] border border-[#F7CCD3] hover:bg-[#FBE4E7] focus:ring-[#B91C35]'
   };
 
   return (

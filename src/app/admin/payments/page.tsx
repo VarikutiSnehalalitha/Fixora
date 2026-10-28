@@ -46,22 +46,22 @@ export default function AdminPaymentsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 py-10 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#FAF9F6] py-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto space-y-6">
-        <Link href="/admin" className="text-xs font-bold text-slate-500 hover:text-slate-800 flex items-center gap-1">
+        <Link href="/admin" className="text-xs font-bold text-[#687474] hover:text-[#252B2B] flex items-center gap-1 transition-colors">
           <ArrowLeft className="w-4 h-4" />
           <span>Back to Admin Console</span>
         </Link>
 
         <div>
-          <h1 className="text-2xl font-black text-slate-900">Payments, Commissions & Refunds</h1>
-          <p className="text-xs text-slate-500">Monitor transactions, commissions, and dispute refund approvals.</p>
+          <h1 className="text-2xl font-black text-[#252B2B]">Payments, Commissions & Refunds</h1>
+          <p className="text-xs text-[#687474]">Monitor transactions, commissions, and dispute refund approvals.</p>
         </div>
 
-        <Card className="space-y-4">
+        <Card className="space-y-4 bg-white border border-[#E6E8E5]">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-slate-50 text-slate-500 uppercase border-b border-slate-100">
+              <thead className="bg-[#FAF9F6] text-[#687474] uppercase border-b border-[#E6E8E5]">
                 <tr>
                   <th className="py-2.5 px-3 font-semibold">Booking ID</th>
                   <th className="py-2.5 px-3 font-semibold">Customer</th>
@@ -72,26 +72,26 @@ export default function AdminPaymentsPage() {
                   <th className="py-2.5 px-3 font-semibold">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100">
+              <tbody className="divide-y divide-[#E6E8E5]">
                 {bookings.map((b) => (
-                  <tr key={b.id} className="hover:bg-slate-50/50">
-                    <td className="py-3 px-3 font-mono font-bold text-slate-700">{b.booking_number}</td>
-                    <td className="py-3 px-3 font-semibold text-slate-900">{b.customer_name}</td>
-                    <td className="py-3 px-3 font-bold text-slate-900">₹{b.total_amount}</td>
-                    <td className="py-3 px-3 text-slate-600">₹{b.platform_commission}</td>
+                  <tr key={b.id} className="hover:bg-[#FAF9F6]/60 transition-colors">
+                    <td className="py-3 px-3 font-mono font-bold text-[#252B2B]">{b.booking_number}</td>
+                    <td className="py-3 px-3 font-semibold text-[#252B2B]">{b.customer_name}</td>
+                    <td className="py-3 px-3 font-bold text-[#252B2B]">₹{b.total_amount}</td>
+                    <td className="py-3 px-3 text-[#687474]">₹{b.platform_commission}</td>
                     <td className="py-3 px-3">
                       <Badge variant={b.payment_status === 'paid' ? 'success' : b.payment_status === 'refunded' ? 'neutral' : 'warning'}>
                         {b.payment_status.toUpperCase()}
                       </Badge>
                     </td>
-                    <td className="py-3 px-3 font-mono text-[11px] text-slate-400">
+                    <td className="py-3 px-3 font-mono text-[11px] text-[#687474]">
                       {b.payment_reference || 'Pending'}
                     </td>
                     <td className="py-3 px-3">
                       {b.payment_status === 'paid' && (
                         <button
                           onClick={() => handleTriggerRefund(b.id)}
-                          className="text-rose-600 hover:text-rose-800 font-bold text-[11px] flex items-center gap-1"
+                          className="text-[#B91C35] hover:text-[#B91C35]/80 font-bold text-[11px] flex items-center gap-1 transition-colors"
                         >
                           <RotateCcw className="w-3.5 h-3.5" />
                           <span>Refund</span>

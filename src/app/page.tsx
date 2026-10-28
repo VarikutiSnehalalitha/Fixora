@@ -15,13 +15,9 @@ import {
   CheckCircle2,
   ArrowRight,
   Search,
-  Star,
-  PhoneCall,
   Zap,
-  Sparkles,
   ChevronRight,
-  ShieldAlert,
-  SlidersHorizontal
+  ChevronDown
 } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
@@ -54,64 +50,71 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col">
+    <div className="min-h-screen bg-[#FAF9F6] text-[#252B2B] flex flex-col">
       {/* HERO SECTION */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-blue-900 via-slate-900 to-slate-950 text-white pt-12 pb-24 px-4 sm:px-6 lg:px-8">
-        <div className="absolute inset-0 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:24px_24px] opacity-15 pointer-events-none"></div>
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#FAF9F6] via-[#F4F8F6] to-[#FAF9F6] text-[#252B2B] pt-10 pb-20 px-4 sm:px-6 lg:px-8 border-b border-[#E6E8E5]">
+        {/* Subtle decorative background tint */}
+        <div className="absolute inset-0 bg-[radial-gradient(#0F766E_0.75px,transparent_0.75px)] [background-size:24px_24px] opacity-[0.035] pointer-events-none"></div>
 
         <div className="max-w-7xl mx-auto relative z-10">
-          {/* Top Pill / City selector */}
+          {/* Top Pill / Service Hub Selector */}
           <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/15 text-xs">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-              <span className="text-emerald-300 font-bold uppercase tracking-wider">Live & Active</span>
-              <span className="text-slate-300">| Rapid Dispatch within 15–25 Mins</span>
+            {/* Elegant availability indicator */}
+            <div className="inline-flex items-center gap-2 bg-[#DDEFE7] px-3.5 py-1.5 rounded-full border border-[#B8DEC9] text-xs">
+              <span className="w-2 h-2 rounded-full bg-[#21845B]"></span>
+              <span className="text-[#21845B] font-bold uppercase tracking-wider">
+                Available Around the Clock
+              </span>
+              <span className="hidden sm:inline text-[#687474]">| Service Goal: 15–25 Min Dispatch</span>
             </div>
 
-            <div className="flex items-center gap-2 bg-slate-800/90 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-slate-300">
-              <MapPin className="w-3.5 h-3.5 text-brand-400" />
-              <span className="text-slate-400 font-medium">Service Hub:</span>
-              <select
-                value={selectedCity}
-                onChange={(e) => setSelectedCity(e.target.value)}
-                className="bg-transparent font-semibold text-white focus:outline-none cursor-pointer"
-              >
-                {POPULAR_LOCATIONS.map((loc) => (
-                  <option key={loc.name} value={loc.name} className="bg-slate-900 text-white">
-                    {loc.name}
-                  </option>
-                ))}
-              </select>
+            {/* Redesigned Location selector with white bg, thin grey border, teal icon */}
+            <div className="flex items-center gap-2 bg-white border border-[#E6E8E5] rounded-xl px-3.5 py-1.5 text-xs text-[#252B2B] shadow-sm">
+              <MapPin className="w-3.5 h-3.5 text-[#0F766E] shrink-0" />
+              <span className="text-[#687474] font-medium">Service Hub:</span>
+              <div className="relative inline-flex items-center">
+                <select
+                  value={selectedCity}
+                  onChange={(e) => setSelectedCity(e.target.value)}
+                  className="bg-transparent font-semibold text-[#252B2B] focus:outline-none cursor-pointer pr-4 appearance-none"
+                >
+                  {POPULAR_LOCATIONS.map((loc) => (
+                    <option key={loc.name} value={loc.name} className="bg-white text-[#252B2B]">
+                      {loc.name}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown className="w-3 h-3 text-[#687474] -ml-3 pointer-events-none" />
+              </div>
             </div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left Headline & CTAs */}
             <div className="lg:col-span-7 space-y-6">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.15]">
-                Stranded or Broken Down? <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-emerald-400">
-                  Technician Dispatched
-                </span>{' '}
-                to Your Exact Location.
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.15] text-[#252B2B]">
+                Reliable Help.{' '}
+                <span className="text-[#0F766E]">
+                  Right Where You Need It.
+                </span>
               </h1>
 
-              <p className="text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed">
-                24/7 Verified Mechanics, Roadside Towing, PESO-Authorized Emergency Fuel, and Certified Home Appliance Repair Technicians across India.
+              <p className="text-base sm:text-lg text-[#687474] max-w-2xl leading-relaxed">
+                Book trusted mechanics, roadside assistance, emergency fuel services, and home appliance technicians whenever you need help.
               </p>
 
-              {/* Quick Search */}
+              {/* Redesigned Service Search Bar */}
               <form onSubmit={handleSearchSubmit} className="max-w-xl">
-                <div className="flex items-center bg-white rounded-2xl shadow-xl p-2 border border-slate-200">
-                  <Search className="w-5 h-5 text-slate-400 ml-3 shrink-0" />
+                <div className="flex items-center bg-white rounded-2xl shadow-sm p-2 border border-[#E6E8E5] focus-within:border-[#0F766E] transition-colors">
+                  <Search className="w-5 h-5 text-[#687474] ml-3 shrink-0" />
                   <input
                     type="text"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="e.g. Car battery dead, tyre puncture, fridge cooling..."
-                    className="w-full px-3 py-2 text-slate-900 text-sm focus:outline-none"
+                    placeholder="Describe your problem, e.g. flat tyre or washing machine repair"
+                    className="w-full px-3 py-2 text-[#252B2B] text-sm focus:outline-none placeholder:text-[#687474]/70"
                   />
-                  <Button type="submit" variant="primary" size="md" className="shrink-0">
+                  <Button type="submit" variant="primary" size="md" className="shrink-0 bg-[#0F766E] hover:bg-[#0D645E]">
                     Find Help
                   </Button>
                 </div>
@@ -121,10 +124,10 @@ export default function HomePage() {
               <div className="flex flex-wrap items-center gap-4 pt-2">
                 <Link href="/emergency">
                   <Button
-                    variant="emergency"
+                    variant="primary"
                     size="lg"
-                    leftIcon={<Zap className="w-5 h-5 fill-white" />}
-                    className="emergency-pulse shadow-red-950/40 text-base"
+                    leftIcon={<AlertTriangle className="w-5 h-5 text-[#D99119]" />}
+                    className="bg-[#0F766E] hover:bg-[#0D645E] text-white shadow-sm text-base font-semibold"
                   >
                     Emergency Assistance Now
                   </Button>
@@ -134,7 +137,7 @@ export default function HomePage() {
                   <Button
                     variant="outline"
                     size="lg"
-                    className="bg-white/10 text-white border-white/20 hover:bg-white/20"
+                    className="bg-white text-[#252B2B] border-[#E6E8E5] hover:border-[#0F766E] hover:text-[#0F766E]"
                     rightIcon={<ArrowRight className="w-4 h-4" />}
                   >
                     Schedule a Service
@@ -143,88 +146,93 @@ export default function HomePage() {
               </div>
 
               {/* Highlights */}
-              <div className="grid grid-cols-3 gap-4 pt-6 border-t border-slate-800 text-slate-300 text-xs sm:text-sm">
+              <div className="grid grid-cols-3 gap-4 pt-6 border-t border-[#E6E8E5] text-xs sm:text-sm">
                 <div>
-                  <div className="font-extrabold text-white text-lg sm:text-xl">15–30 min</div>
-                  <div className="text-slate-400">Average Arrival Time</div>
+                  <div className="font-extrabold text-[#252B2B] text-lg sm:text-xl">15–30 min</div>
+                  <div className="text-[#687474]">Average Arrival Target</div>
                 </div>
                 <div>
-                  <div className="font-extrabold text-white text-lg sm:text-xl">100%</div>
-                  <div className="text-slate-400">Background Checked</div>
+                  <div className="font-extrabold text-[#252B2B] text-lg sm:text-xl">100%</div>
+                  <div className="text-[#687474]">Background Checked</div>
                 </div>
                 <div>
-                  <div className="font-extrabold text-white text-lg sm:text-xl">PESO Certified</div>
-                  <div className="text-slate-400">Lawful Fuel Supply</div>
+                  <div className="font-extrabold text-[#252B2B] text-lg sm:text-xl">PESO Certified</div>
+                  <div className="text-[#687474]">Lawful Fuel Supply</div>
                 </div>
               </div>
             </div>
 
-            {/* Right Interactive Quick Assist Card */}
+            {/* Right Redesigned Service Booking Card */}
             <div className="lg:col-span-5">
-              <div className="bg-white/95 backdrop-blur-lg rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/20 text-slate-900 space-y-6">
-                <div className="flex items-center justify-between border-b border-slate-100 pb-4">
+              <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-[#E6E8E5] text-[#252B2B] space-y-6">
+                <div className="flex items-center justify-between border-b border-[#E6E8E5] pb-4">
                   <div>
-                    <h3 className="font-extrabold text-lg text-slate-900">Immediate Request</h3>
-                    <p className="text-xs text-slate-500">Select what is required right now</p>
+                    <h3 className="font-extrabold text-lg text-[#252B2B]">Immediate Request</h3>
+                    <p className="text-xs text-[#687474]">Select what is required right now</p>
                   </div>
-                  <span className="bg-red-900 text-white text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1 shadow-sm">
-                    <Zap className="w-3.5 h-3.5 fill-white text-white" /> 24/7 Rapid Rescue
+                  <span className="bg-[#DDEFE7] text-[#21845B] text-xs font-semibold px-2.5 py-1 rounded-full flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#21845B]"></span>
+                    Around the Clock
                   </span>
                 </div>
 
                 <div className="grid grid-cols-2 gap-3">
+                  {/* Car & Bike */}
                   <Link
                     href="/services/vehicle"
-                    className="p-4 rounded-2xl border border-slate-200 hover:border-brand-500 hover:bg-brand-50/50 transition-all text-left group"
+                    className="p-4 rounded-2xl border border-[#E6E8E5] hover:border-[#0F766E] hover:bg-[#FAF9F6] transition-all text-left group"
                   >
-                    <div className="w-10 h-10 rounded-xl bg-blue-100 text-brand-700 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                    <div className="w-10 h-10 rounded-xl bg-[#EAF5F2] text-[#0F766E] flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
                       <Car className="w-5 h-5" />
                     </div>
-                    <div className="font-bold text-sm text-slate-900">Car & Bike</div>
-                    <div className="text-xs text-slate-500 mt-0.5">Puncture, battery, towing</div>
+                    <div className="font-bold text-sm text-[#252B2B]">Car & Bike</div>
+                    <div className="text-xs text-[#687474] mt-0.5 line-clamp-2">Repairs, punctures, batteries and towing</div>
                   </Link>
 
+                  {/* Home Appliances */}
                   <Link
                     href="/services/appliance"
-                    className="p-4 rounded-2xl border border-slate-200 hover:border-brand-500 hover:bg-brand-50/50 transition-all text-left group"
+                    className="p-4 rounded-2xl border border-[#E6E8E5] hover:border-[#0F766E] hover:bg-[#FAF9F6] transition-all text-left group"
                   >
-                    <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                    <div className="w-10 h-10 rounded-xl bg-[#DDEFE7] text-[#0F766E] flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
                       <Home className="w-5 h-5" />
                     </div>
-                    <div className="font-bold text-sm text-slate-900">Appliance Fix</div>
-                    <div className="text-xs text-slate-500 mt-0.5">Fridge, AC, Washing Machine</div>
+                    <div className="font-bold text-sm text-[#252B2B]">Home Appliances</div>
+                    <div className="text-xs text-[#687474] mt-0.5 line-clamp-2">Refrigerators, washing machines and ACs</div>
                   </Link>
 
+                  {/* Emergency Fuel */}
                   <Link
                     href="/services/fuel"
-                    className="p-4 rounded-2xl border border-slate-200 hover:border-brand-500 hover:bg-brand-50/50 transition-all text-left group"
+                    className="p-4 rounded-2xl border border-[#E6E8E5] hover:border-[#0F766E] hover:bg-[#FAF9F6] transition-all text-left group"
                   >
-                    <div className="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                    <div className="w-10 h-10 rounded-xl bg-[#F3EBDD] text-[#8C6D3B] flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
                       <Fuel className="w-5 h-5" />
                     </div>
-                    <div className="font-bold text-sm text-slate-900">Emergency Fuel</div>
-                    <div className="text-xs text-slate-500 mt-0.5">Diesel / Petrol (PESO Safe)</div>
+                    <div className="font-bold text-sm text-[#252B2B]">Emergency Fuel</div>
+                    <div className="text-xs text-[#687474] mt-0.5 line-clamp-2">Check eligible authorized fuel assistance</div>
                   </Link>
 
+                  {/* Emergency Assistance */}
                   <Link
                     href="/emergency"
-                    className="p-4 rounded-2xl border border-red-800 bg-gradient-to-br from-red-900 via-red-950 to-slate-950 text-white hover:shadow-lg transition-all text-left group"
+                    className="p-4 rounded-2xl border border-[#E6E8E5] hover:border-[#0F766E] hover:bg-[#FAF9F6] transition-all text-left group"
                   >
-                    <div className="w-10 h-10 rounded-xl bg-white/20 text-white flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                      <Zap className="w-5 h-5 fill-white" />
+                    <div className="w-10 h-10 rounded-xl bg-[#FEF3C7] text-[#D99119] flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
+                      <AlertTriangle className="w-5 h-5" />
                     </div>
-                    <div className="font-bold text-sm text-white">Stranded SOS</div>
-                    <div className="text-xs text-red-200 mt-0.5">Instant GPS Dispatch</div>
+                    <div className="font-bold text-sm text-[#252B2B]">Emergency Assistance</div>
+                    <div className="text-xs text-[#687474] mt-0.5 line-clamp-2">Request urgent roadside help</div>
                   </Link>
                 </div>
 
-                <div className="bg-slate-50 rounded-2xl p-4 border border-slate-100 flex items-center justify-between text-xs text-slate-600">
+                <div className="bg-[#FAF9F6] rounded-2xl p-4 border border-[#E6E8E5] flex items-center justify-between text-xs text-[#687474]">
                   <div className="flex items-center gap-2">
-                    <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
-                    <span>Razorpay Secure • Itemized Quotes • Warranty</span>
+                    <ShieldCheck className="w-4 h-4 text-[#21845B] shrink-0" />
+                    <span>Itemized Quotes • Verified Experts • Warranty</span>
                   </div>
-                  <Link href="/book" className="font-semibold text-brand-600 hover:underline">
-                    View Pricing
+                  <Link href="/book" className="font-semibold text-[#0F766E] hover:underline">
+                    View Rates
                   </Link>
                 </div>
               </div>
@@ -234,49 +242,49 @@ export default function HomePage() {
       </section>
 
       {/* EMERGENCY CATEGORY QUICK CARDS */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 relative z-20">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <Card hoverEffect className="p-5 flex items-center gap-4 bg-white shadow-lg border-slate-100">
-            <div className="w-12 h-12 rounded-2xl bg-red-50 text-red-800 flex items-center justify-center shrink-0">
-              <Zap className="w-6 h-6 fill-red-800" />
+          <Card hoverEffect className="p-5 flex items-center gap-4 bg-white shadow-sm border-[#E6E8E5]">
+            <div className="w-12 h-12 rounded-2xl bg-[#FEF3C7] text-[#D99119] flex items-center justify-center shrink-0">
+              <Zap className="w-6 h-6" />
             </div>
             <div>
-              <div className="text-xs font-bold text-red-800 uppercase tracking-wide">Battery Boost</div>
-              <div className="text-sm font-bold text-slate-900">Instant Jump-Start</div>
-              <div className="text-xs text-slate-500">From ₹349</div>
+              <div className="text-xs font-semibold text-[#D99119] uppercase tracking-wide">Battery Boost</div>
+              <div className="text-sm font-bold text-[#252B2B]">Instant Jump-Start</div>
+              <div className="text-xs text-[#687474]">From ₹349</div>
             </div>
           </Card>
 
-          <Card hoverEffect className="p-5 flex items-center gap-4 bg-white shadow-lg border-slate-100">
-            <div className="w-12 h-12 rounded-2xl bg-blue-50 text-brand-600 flex items-center justify-center shrink-0">
+          <Card hoverEffect className="p-5 flex items-center gap-4 bg-white shadow-sm border-[#E6E8E5]">
+            <div className="w-12 h-12 rounded-2xl bg-[#EAF5F2] text-[#0F766E] flex items-center justify-center shrink-0">
               <Wrench className="w-6 h-6" />
             </div>
             <div>
-              <div className="text-xs font-semibold text-brand-600 uppercase tracking-wide">Tyre Assistance</div>
-              <div className="text-sm font-bold text-slate-900">Flat Tyre & Plug</div>
-              <div className="text-xs text-slate-500">From ₹249</div>
+              <div className="text-xs font-semibold text-[#0F766E] uppercase tracking-wide">Tyre Assistance</div>
+              <div className="text-sm font-bold text-[#252B2B]">Flat Tyre & Plug</div>
+              <div className="text-xs text-[#687474]">From ₹249</div>
             </div>
           </Card>
 
-          <Card hoverEffect className="p-5 flex items-center gap-4 bg-white shadow-lg border-slate-100">
-            <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
+          <Card hoverEffect className="p-5 flex items-center gap-4 bg-white shadow-sm border-[#E6E8E5]">
+            <div className="w-12 h-12 rounded-2xl bg-[#DDEFE7] text-[#21845B] flex items-center justify-center shrink-0">
               <Car className="w-6 h-6" />
             </div>
             <div>
-              <div className="text-xs font-semibold text-amber-600 uppercase tracking-wide">Safe Towing</div>
-              <div className="text-sm font-bold text-slate-900">Flatbed Recovery</div>
-              <div className="text-xs text-slate-500">From ₹999</div>
+              <div className="text-xs font-semibold text-[#21845B] uppercase tracking-wide">Safe Towing</div>
+              <div className="text-sm font-bold text-[#252B2B]">Flatbed Recovery</div>
+              <div className="text-xs text-[#687474]">From ₹999</div>
             </div>
           </Card>
 
-          <Card hoverEffect className="p-5 flex items-center gap-4 bg-white shadow-lg border-slate-100">
-            <div className="w-12 h-12 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center shrink-0">
+          <Card hoverEffect className="p-5 flex items-center gap-4 bg-white shadow-sm border-[#E6E8E5]">
+            <div className="w-12 h-12 rounded-2xl bg-[#F3EBDD] text-[#8C6D3B] flex items-center justify-center shrink-0">
               <Fuel className="w-6 h-6" />
             </div>
             <div>
-              <div className="text-xs font-semibold text-purple-600 uppercase tracking-wide">Dry Tank</div>
-              <div className="text-sm font-bold text-slate-900">Emergency Fuel</div>
-              <div className="text-xs text-slate-500">PESO Regulated</div>
+              <div className="text-xs font-semibold text-[#8C6D3B] uppercase tracking-wide">Dry Tank</div>
+              <div className="text-sm font-bold text-[#252B2B]">Emergency Fuel</div>
+              <div className="text-xs text-[#687474]">PESO Regulated</div>
             </div>
           </Card>
         </div>
@@ -285,11 +293,11 @@ export default function HomePage() {
       {/* CORE SERVICES BREAKDOWN */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-          <Badge variant="info">Full-Spectrum Repair Hub</Badge>
-          <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
+          <Badge variant="info">Full-Spectrum Service Marketplace</Badge>
+          <h2 className="text-3xl sm:text-4xl font-black text-[#252B2B] tracking-tight">
             Comprehensive Assistance for Vehicles & Home
           </h2>
-          <p className="text-slate-600 text-base leading-relaxed">
+          <p className="text-[#687474] text-base leading-relaxed">
             Every booking is paired with a verified specialist within your service radius, featuring live GPS tracking and customer OTP arrival confirmation.
           </p>
         </div>
@@ -298,17 +306,17 @@ export default function HomePage() {
         <div className="mb-14">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-[#EAF5F2] text-[#0F766E] flex items-center justify-center">
                 <Car className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="text-xl font-extrabold text-slate-900">Vehicle Breakdown & Roadside</h3>
-                <p className="text-xs text-slate-500">Car, Bike, SUV, EV & Commercial Vehicles</p>
+                <h3 className="text-xl font-extrabold text-[#252B2B]">Vehicle Breakdown & Roadside</h3>
+                <p className="text-xs text-[#687474]">Car, Bike, SUV, EV & Commercial Vehicles</p>
               </div>
             </div>
             <Link
               href="/services/vehicle"
-              className="text-sm font-bold text-brand-600 hover:text-brand-700 flex items-center gap-1"
+              className="text-sm font-bold text-[#0F766E] hover:text-[#0D645E] flex items-center gap-1"
             >
               <span>Explore All</span>
               <ChevronRight className="w-4 h-4" />
@@ -320,15 +328,15 @@ export default function HomePage() {
               <Card key={item.id} hoverEffect className="flex flex-col justify-between">
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-brand-600 bg-brand-50 px-2.5 py-1 rounded-md">
+                    <span className="text-xs font-bold text-[#0F766E] bg-[#EAF5F2] px-2.5 py-1 rounded-md">
                       Instant Dispatch
                     </span>
-                    <span className="text-sm font-extrabold text-slate-900">₹{item.basePrice}</span>
+                    <span className="text-sm font-extrabold text-[#252B2B]">₹{item.basePrice}</span>
                   </div>
-                  <h4 className="font-bold text-base text-slate-900">{item.title}</h4>
-                  <p className="text-xs text-slate-600 leading-relaxed">{item.description}</p>
+                  <h4 className="font-bold text-base text-[#252B2B]">{item.title}</h4>
+                  <p className="text-xs text-[#687474] leading-relaxed">{item.description}</p>
                 </div>
-                <div className="pt-4 mt-4 border-t border-slate-100">
+                <div className="pt-4 mt-4 border-t border-[#E6E8E5]">
                   <Link href={`/emergency?category=${item.id}`}>
                     <Button variant="outline" size="sm" className="w-full justify-between">
                       <span>Book Breakdown Specialist</span>
@@ -345,17 +353,17 @@ export default function HomePage() {
         <div>
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-[#DDEFE7] text-[#0F766E] flex items-center justify-center">
                 <Home className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="text-xl font-extrabold text-slate-900">Home Appliance Repairs</h3>
-                <p className="text-xs text-slate-500">Instant Diagnosis, OEM Spares & 30-Day Service Warranty</p>
+                <h3 className="text-xl font-extrabold text-[#252B2B]">Home Appliance Repairs</h3>
+                <p className="text-xs text-[#687474]">Instant Diagnosis, OEM Spares & 30-Day Service Warranty</p>
               </div>
             </div>
             <Link
               href="/services/appliance"
-              className="text-sm font-bold text-brand-600 hover:text-brand-700 flex items-center gap-1"
+              className="text-sm font-bold text-[#0F766E] hover:text-[#0D645E] flex items-center gap-1"
             >
               <span>Explore All</span>
               <ChevronRight className="w-4 h-4" />
@@ -367,15 +375,15 @@ export default function HomePage() {
               <Card key={item.id} hoverEffect className="flex flex-col justify-between">
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-amber-700 bg-amber-50 px-2.5 py-1 rounded-md">
+                    <span className="text-xs font-bold text-[#21845B] bg-[#EAF4EE] px-2.5 py-1 rounded-md">
                       Visit & Inspection
                     </span>
-                    <span className="text-sm font-extrabold text-slate-900">₹{item.basePrice}</span>
+                    <span className="text-sm font-extrabold text-[#252B2B]">₹{item.basePrice}</span>
                   </div>
-                  <h4 className="font-bold text-base text-slate-900">{item.title}</h4>
-                  <p className="text-xs text-slate-600 leading-relaxed">{item.description}</p>
+                  <h4 className="font-bold text-base text-[#252B2B]">{item.title}</h4>
+                  <p className="text-xs text-[#687474] leading-relaxed">{item.description}</p>
                 </div>
-                <div className="pt-4 mt-4 border-t border-slate-100">
+                <div className="pt-4 mt-4 border-t border-[#E6E8E5]">
                   <Link href={`/book?category=${item.id}&type=appliance`}>
                     <Button variant="outline" size="sm" className="w-full justify-between">
                       <span>Schedule Technician</span>
@@ -390,100 +398,100 @@ export default function HomePage() {
       </section>
 
       {/* HOW IT WORKS */}
-      <section className="bg-slate-100/80 py-20 px-4 sm:px-6 lg:px-8 border-y border-slate-200">
+      <section className="bg-[#FAF9F6] py-20 px-4 sm:px-6 lg:px-8 border-y border-[#E6E8E5]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
             <Badge variant="neutral">Seamless Experience</Badge>
-            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-black text-[#252B2B] tracking-tight">
               How FixNow 24/7 Works
             </h2>
-            <p className="text-slate-600 text-sm">
-              From roadside distress to full resolution in four simple, transparent steps.
+            <p className="text-[#687474] text-sm">
+              From initial distress call to full resolution in four simple, transparent steps.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 relative">
-              <div className="w-10 h-10 rounded-xl bg-brand-600 text-white font-extrabold flex items-center justify-center mb-4">
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-[#E6E8E5] relative">
+              <div className="w-10 h-10 rounded-xl bg-[#0F766E] text-white font-extrabold flex items-center justify-center mb-4">
                 1
               </div>
-              <h4 className="font-bold text-slate-900 text-base mb-1">Select Issue & GPS Pin</h4>
-              <p className="text-xs text-slate-600 leading-relaxed">
+              <h4 className="font-bold text-[#252B2B] text-base mb-1">Select Issue & GPS Pin</h4>
+              <p className="text-xs text-[#687474] leading-relaxed">
                 Choose your vehicle or appliance issue. Share your precise GPS coordinates or enter landmarks.
               </p>
             </div>
 
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 relative">
-              <div className="w-10 h-10 rounded-xl bg-brand-600 text-white font-extrabold flex items-center justify-center mb-4">
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-[#E6E8E5] relative">
+              <div className="w-10 h-10 rounded-xl bg-[#0F766E] text-white font-extrabold flex items-center justify-center mb-4">
                 2
               </div>
-              <h4 className="font-bold text-slate-900 text-base mb-1">Instant Specialist Dispatch</h4>
-              <p className="text-xs text-slate-600 leading-relaxed">
+              <h4 className="font-bold text-[#252B2B] text-base mb-1">Instant Specialist Dispatch</h4>
+              <p className="text-xs text-[#687474] leading-relaxed">
                 Our algorithm locates the nearest online, verified technician with the matching skillset and parts.
               </p>
             </div>
 
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 relative">
-              <div className="w-10 h-10 rounded-xl bg-brand-600 text-white font-extrabold flex items-center justify-center mb-4">
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-[#E6E8E5] relative">
+              <div className="w-10 h-10 rounded-xl bg-[#0F766E] text-white font-extrabold flex items-center justify-center mb-4">
                 3
               </div>
-              <h4 className="font-bold text-slate-900 text-base mb-1">Live Tracking & OTP Check</h4>
-              <p className="text-xs text-slate-600 leading-relaxed">
+              <h4 className="font-bold text-[#252B2B] text-base mb-1">Live Tracking & OTP Check</h4>
+              <p className="text-xs text-[#687474] leading-relaxed">
                 Track your technician in real-time. Confirm their arrival using a secure 4-digit verification code.
               </p>
             </div>
 
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 relative">
-              <div className="w-10 h-10 rounded-xl bg-brand-600 text-white font-extrabold flex items-center justify-center mb-4">
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-[#E6E8E5] relative">
+              <div className="w-10 h-10 rounded-xl bg-[#0F766E] text-white font-extrabold flex items-center justify-center mb-4">
                 4
               </div>
-              <h4 className="font-bold text-slate-900 text-base mb-1">Approved Quote & Safe Pay</h4>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Review an itemized quote before chargeable repairs commence. Pay via test-mode UPI, card or cash.
+              <h4 className="font-bold text-[#252B2B] text-base mb-1">Approved Quote & Safe Pay</h4>
+              <p className="text-xs text-[#687474] leading-relaxed">
+                Review an itemized quote before chargeable repairs commence. Pay via UPI, card or cash.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* REGULATORY SAFETY & PESO COMPLIANCE SECTION */}
+      {/* REGULATORY SAFETY & PESO COMPLIANCE SECTION - Clean Light Theme */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="bg-gradient-to-r from-slate-900 to-navy-900 text-white rounded-3xl p-8 sm:p-12 shadow-2xl">
+        <div className="bg-[#EAF5F2] border border-[#A7D9CD] rounded-3xl p-8 sm:p-12 shadow-sm">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-8 space-y-4">
-              <div className="inline-flex items-center gap-2 bg-emerald-500/20 text-emerald-300 px-3 py-1 rounded-full text-xs font-semibold border border-emerald-500/30">
+              <div className="inline-flex items-center gap-2 bg-[#DDEFE7] text-[#21845B] px-3 py-1 rounded-full text-xs font-semibold border border-[#B8DEC9]">
                 <ShieldCheck className="w-4 h-4" />
                 <span>Statutory Safety Standard Compliance</span>
               </div>
-              <h3 className="text-2xl sm:text-3xl font-black tracking-tight text-white">
+              <h3 className="text-2xl sm:text-3xl font-black tracking-tight text-[#252B2B]">
                 Regulated Emergency Fuel Assistance
               </h3>
-              <p className="text-sm text-slate-300 leading-relaxed">
+              <p className="text-sm text-[#525D5D] leading-relaxed">
                 Unlike unauthorized platforms, FixNow strictly complies with the <strong>Petroleum Rules 2002</strong> and PESO safety directives. Only registered, PESO-inspected mobile delivery units and approved steel canisters are permitted to supply emergency diesel (max 20L) and petrol (max 5L).
               </p>
-              <div className="pt-2 flex flex-wrap gap-4 text-xs text-slate-300">
-                <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+              <div className="pt-2 flex flex-wrap gap-4 text-xs text-[#252B2B]">
+                <div className="flex items-center gap-1.5 font-medium">
+                  <CheckCircle2 className="w-4 h-4 text-[#21845B]" />
                   <span>Verified PESO License Records</span>
                 </div>
-                <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                <div className="flex items-center gap-1.5 font-medium">
+                  <CheckCircle2 className="w-4 h-4 text-[#21845B]" />
                   <span>Customer Handover OTP</span>
                 </div>
-                <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                <div className="flex items-center gap-1.5 font-medium">
+                  <CheckCircle2 className="w-4 h-4 text-[#21845B]" />
                   <span>Nearby Pump Fallback Navigation</span>
                 </div>
               </div>
             </div>
             <div className="lg:col-span-4 flex flex-col gap-3 justify-center">
               <Link href="/services/fuel">
-                <Button variant="primary" size="lg" className="w-full">
+                <Button variant="primary" size="lg" className="w-full bg-[#0F766E] hover:bg-[#0D645E]">
                   Request Regulated Fuel
                 </Button>
               </Link>
               <Link href="/petroleum-compliance">
-                <Button variant="outline" size="md" className="w-full bg-white/10 text-white border-white/20">
+                <Button variant="outline" size="md" className="w-full bg-white text-[#252B2B] border-[#A7D9CD] hover:border-[#0F766E] hover:text-[#0F766E]">
                   Read PESO Rules & Limits
                 </Button>
               </Link>
@@ -496,7 +504,7 @@ export default function HomePage() {
       <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
           <Badge variant="success">Customer Trust</Badge>
-          <h2 className="text-2xl sm:text-3xl font-black text-slate-900">
+          <h2 className="text-2xl sm:text-3xl font-black text-[#252B2B]">
             Real Stories from Real Drivers & Homeowners
           </h2>
         </div>
@@ -504,13 +512,13 @@ export default function HomePage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <Card className="space-y-4">
             <StarRating rating={5} />
-            <p className="text-xs text-slate-600 italic leading-relaxed">
+            <p className="text-xs text-[#687474] italic leading-relaxed">
               &quot;My car battery gave up at 11:30 PM on the Bellandur flyover. Apex Auto Care arrived in 18 minutes with a booster pack. The OTP verification made me feel completely safe.&quot;
             </p>
-            <div className="pt-2 border-t border-slate-100 flex items-center justify-between">
+            <div className="pt-2 border-t border-[#E6E8E5] flex items-center justify-between">
               <div>
-                <div className="text-xs font-bold text-slate-900">Pooja Venkatesh</div>
-                <div className="text-[10px] text-slate-500">Bengaluru • Hyundai i20</div>
+                <div className="text-xs font-bold text-[#252B2B]">Pooja Venkatesh</div>
+                <div className="text-[10px] text-[#687474]">Bengaluru • Hyundai i20</div>
               </div>
               <Badge variant="info" size="sm">Battery Boost</Badge>
             </div>
@@ -518,13 +526,13 @@ export default function HomePage() {
 
           <Card className="space-y-4">
             <StarRating rating={5} />
-            <p className="text-xs text-slate-600 italic leading-relaxed">
+            <p className="text-xs text-[#687474] italic leading-relaxed">
               &quot;Our double-door Samsung refrigerator stopped cooling just before a family gathering. Anand arrived on time, showed me the exact faulty sensor on his quote, and replaced it cleanly.&quot;
             </p>
-            <div className="pt-2 border-t border-slate-100 flex items-center justify-between">
+            <div className="pt-2 border-t border-[#E6E8E5] flex items-center justify-between">
               <div>
-                <div className="text-xs font-bold text-slate-900">Sanjay M.</div>
-                <div className="text-[10px] text-slate-500">Koramangala • Refrigerator</div>
+                <div className="text-xs font-bold text-[#252B2B]">Sanjay M.</div>
+                <div className="text-[10px] text-[#687474]">Koramangala • Refrigerator</div>
               </div>
               <Badge variant="success" size="sm">Appliance Repair</Badge>
             </div>
@@ -532,27 +540,27 @@ export default function HomePage() {
 
           <Card className="space-y-4">
             <StarRating rating={5} />
-            <p className="text-xs text-slate-600 italic leading-relaxed">
+            <p className="text-xs text-[#687474] italic leading-relaxed">
               &quot;Ran dry of diesel on the highway due to a faulty float gauge. The PESO-authorized delivery team brought 10L in a sealed certified container. Handover was confirmed with OTP. Truly lifesaver!&quot;
             </p>
-            <div className="pt-2 border-t border-slate-100 flex items-center justify-between">
+            <div className="pt-2 border-t border-[#E6E8E5] flex items-center justify-between">
               <div>
-                <div className="text-xs font-bold text-slate-900">Arun Pillai</div>
-                <div className="text-[10px] text-slate-500">Electronic City • Mahindra XUV700</div>
+                <div className="text-xs font-bold text-[#252B2B]">Arun Pillai</div>
+                <div className="text-[10px] text-[#687474]">Electronic City • Mahindra XUV700</div>
               </div>
-              <Badge variant="emergency" size="sm">Emergency Diesel</Badge>
+              <Badge variant="warning" size="sm">Emergency Diesel</Badge>
             </div>
           </Card>
         </div>
       </section>
 
       {/* PARTNER REGISTRATION BANNER */}
-      <section className="bg-slate-100 py-16 px-4 sm:px-6 lg:px-8 border-t border-slate-200">
-        <div className="max-w-5xl mx-auto bg-white rounded-3xl p-8 sm:p-10 border border-slate-200/90 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-8">
+      <section className="bg-[#FAF9F6] py-16 px-4 sm:px-6 lg:px-8 border-t border-[#E6E8E5]">
+        <div className="max-w-5xl mx-auto bg-white rounded-3xl p-8 sm:p-10 border border-[#E6E8E5] shadow-sm flex flex-col sm:flex-row items-center justify-between gap-8">
           <div className="space-y-2 text-center sm:text-left">
             <Badge variant="info">Partner Network</Badge>
-            <h3 className="text-2xl font-black text-slate-900">Are You a Skilled Technician or Towing Operator?</h3>
-            <p className="text-xs sm:text-sm text-slate-600 max-w-xl">
+            <h3 className="text-2xl font-black text-[#252B2B]">Are You a Skilled Technician or Towing Operator?</h3>
+            <p className="text-xs sm:text-sm text-[#687474] max-w-xl">
               Grow your local business. Receive high-intent roadside and home repair requests within your chosen radius with guaranteed payouts.
             </p>
           </div>

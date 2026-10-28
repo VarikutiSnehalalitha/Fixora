@@ -2,14 +2,10 @@
 
 import React, { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
-import Link from 'next/link';
 import {
   CreditCard,
   ShieldCheck,
-  CheckCircle2,
   Lock,
-  ArrowRight,
-  AlertCircle,
   QrCode,
   Banknote,
   Receipt
@@ -39,7 +35,7 @@ export default function CheckoutPage() {
 
   if (!booking) {
     return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center p-6 text-slate-500">
+      <div className="min-h-screen bg-[#FAF9F6] flex items-center justify-center p-6 text-[#687474]">
         Loading invoice details...
       </div>
     );
@@ -106,12 +102,12 @@ export default function CheckoutPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#FAF9F6] text-[#252B2B] py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto space-y-8">
-        <div className="flex items-center justify-between border-b border-slate-200 pb-4">
+        <div className="flex items-center justify-between border-b border-[#E6E8E5] pb-4">
           <div>
-            <h1 className="text-2xl font-black text-slate-900">Secure Payment Checkout</h1>
-            <p className="text-xs text-slate-500">Booking #{booking.booking_number} • 256-Bit SSL Encrypted</p>
+            <h1 className="text-2xl font-black text-[#252B2B]">Secure Payment Checkout</h1>
+            <p className="text-xs text-[#687474]">Booking #{booking.booking_number} • 256-Bit SSL Encrypted</p>
           </div>
           <Badge status={booking.status} />
         </div>
@@ -120,17 +116,17 @@ export default function CheckoutPage() {
           {/* Payment Method Selector */}
           <div className="md:col-span-7 space-y-6">
             <Card className="space-y-4">
-              <h3 className="font-bold text-sm text-slate-900 border-b border-slate-100 pb-2">
+              <h3 className="font-bold text-sm text-[#252B2B] border-b border-[#E6E8E5] pb-2">
                 Select Payment Mode
               </h3>
 
               <div className="space-y-3">
-                {/* Razorpay Test Mode */}
+                {/* Razorpay Gateway */}
                 <label
                   className={`p-4 rounded-xl border flex items-center justify-between cursor-pointer transition-all ${
                     paymentMethod === 'razorpay'
-                      ? 'border-brand-600 bg-brand-50/60 shadow-sm'
-                      : 'border-slate-200 hover:border-slate-300'
+                      ? 'border-[#0F766E] bg-[#EAF5F2] shadow-sm'
+                      : 'border-[#E6E8E5] hover:border-[#0F766E]/40'
                   }`}
                 >
                   <div className="flex items-center gap-3">
@@ -139,27 +135,27 @@ export default function CheckoutPage() {
                       name="payment_method"
                       checked={paymentMethod === 'razorpay'}
                       onChange={() => setPaymentMethod('razorpay')}
-                      className="text-brand-600 focus:ring-brand-500 h-4 w-4"
+                      className="text-[#0F766E] focus:ring-[#0F766E] h-4 w-4"
                     />
                     <div>
-                      <div className="font-bold text-sm text-slate-900 flex items-center gap-2">
+                      <div className="font-bold text-sm text-[#252B2B] flex items-center gap-2">
                         <span>Razorpay Gateway</span>
-                        <span className="text-[10px] bg-blue-100 text-brand-800 font-bold px-2 py-0.5 rounded">
-                          Test Mode
+                        <span className="text-[10px] bg-[#EAF5F2] text-[#0F766E] border border-[#0F766E]/20 font-bold px-2 py-0.5 rounded">
+                          Cards / Netbanking
                         </span>
                       </div>
-                      <div className="text-xs text-slate-500">Cards, Netbanking, Wallets</div>
+                      <div className="text-xs text-[#687474]">Credit/Debit Cards, Netbanking, Wallets</div>
                     </div>
                   </div>
-                  <CreditCard className="w-5 h-5 text-brand-600" />
+                  <CreditCard className="w-5 h-5 text-[#0F766E]" />
                 </label>
 
                 {/* UPI Instant */}
                 <label
                   className={`p-4 rounded-xl border flex items-center justify-between cursor-pointer transition-all ${
                     paymentMethod === 'upi'
-                      ? 'border-emerald-600 bg-emerald-50/60 shadow-sm'
-                      : 'border-slate-200 hover:border-slate-300'
+                      ? 'border-[#21845B] bg-[#EAF4EE] shadow-sm'
+                      : 'border-[#E6E8E5] hover:border-[#0F766E]/40'
                   }`}
                 >
                   <div className="flex items-center gap-3">
@@ -168,22 +164,22 @@ export default function CheckoutPage() {
                       name="payment_method"
                       checked={paymentMethod === 'upi'}
                       onChange={() => setPaymentMethod('upi')}
-                      className="text-emerald-600 focus:ring-emerald-500 h-4 w-4"
+                      className="text-[#21845B] focus:ring-[#21845B] h-4 w-4"
                     />
                     <div>
-                      <div className="font-bold text-sm text-slate-900">Instant UPI Payment</div>
-                      <div className="text-xs text-slate-500">Google Pay, PhonePe, Paytm, BHIM</div>
+                      <div className="font-bold text-sm text-[#252B2B]">Instant UPI Payment</div>
+                      <div className="text-xs text-[#687474]">Google Pay, PhonePe, Paytm, BHIM</div>
                     </div>
                   </div>
-                  <QrCode className="w-5 h-5 text-emerald-600" />
+                  <QrCode className="w-5 h-5 text-[#21845B]" />
                 </label>
 
                 {/* Cash on Handover */}
                 <label
                   className={`p-4 rounded-xl border flex items-center justify-between cursor-pointer transition-all ${
                     paymentMethod === 'cash'
-                      ? 'border-amber-600 bg-amber-50/60 shadow-sm'
-                      : 'border-slate-200 hover:border-slate-300'
+                      ? 'border-[#D99119] bg-[#FEF9EE] shadow-sm'
+                      : 'border-[#E6E8E5] hover:border-[#0F766E]/40'
                   }`}
                 >
                   <div className="flex items-center gap-3">
@@ -192,32 +188,32 @@ export default function CheckoutPage() {
                       name="payment_method"
                       checked={paymentMethod === 'cash'}
                       onChange={() => setPaymentMethod('cash')}
-                      className="text-amber-600 focus:ring-amber-500 h-4 w-4"
+                      className="text-[#D99119] focus:ring-[#D99119] h-4 w-4"
                     />
                     <div>
-                      <div className="font-bold text-sm text-slate-900">Cash on Handover / Delivery</div>
-                      <div className="text-xs text-slate-500">Pay directly to technician after completion</div>
+                      <div className="font-bold text-sm text-[#252B2B]">Cash on Handover / Delivery</div>
+                      <div className="text-xs text-[#687474]">Pay directly to specialist after physical completion</div>
                     </div>
                   </div>
-                  <Banknote className="w-5 h-5 text-amber-600" />
+                  <Banknote className="w-5 h-5 text-[#D99119]" />
                 </label>
               </div>
 
               {paymentMethod === 'upi' && (
                 <div className="pt-2 animate-in fade-in">
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">Enter UPI VPA / Handle</label>
+                  <label className="block text-xs font-semibold text-[#252B2B] mb-1">Enter UPI VPA / Handle</label>
                   <input
                     type="text"
                     value={upiId}
                     onChange={(e) => setUpiId(e.target.value)}
-                    className="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl"
+                    className="w-full px-3 py-2 text-sm bg-[#FAF9F6] border border-[#E6E8E5] rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0F766E]"
                   />
                 </div>
               )}
             </Card>
 
-            <div className="p-4 bg-slate-100 rounded-2xl flex items-center gap-3 text-xs text-slate-600">
-              <Lock className="w-4 h-4 text-emerald-600 shrink-0" />
+            <div className="p-4 bg-white border border-[#E6E8E5] rounded-2xl flex items-center gap-3 text-xs text-[#687474] shadow-sm">
+              <Lock className="w-4 h-4 text-[#21845B] shrink-0" />
               <span>
                 Zero raw card data is ever stored on this server. Payments are tokenized and verified through PCI-DSS Level 1 compliant infrastructure.
               </span>
@@ -227,15 +223,15 @@ export default function CheckoutPage() {
           {/* Right Column: Order Invoice Breakdown */}
           <div className="md:col-span-5 space-y-6">
             <Card className="space-y-4">
-              <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                <h3 className="font-bold text-sm text-slate-900 flex items-center gap-1.5">
-                  <Receipt className="w-4 h-4 text-brand-600" />
+              <div className="flex items-center justify-between border-b border-[#E6E8E5] pb-3">
+                <h3 className="font-bold text-sm text-[#252B2B] flex items-center gap-1.5">
+                  <Receipt className="w-4 h-4 text-[#0F766E]" />
                   Itemized Bill
                 </h3>
-                <span className="text-xs text-slate-500">Tax Invoice</span>
+                <span className="text-xs text-[#687474]">Tax Invoice</span>
               </div>
 
-              <div className="space-y-2 text-xs text-slate-600">
+              <div className="space-y-2 text-xs text-[#687474]">
                 <div className="flex justify-between">
                   <span>Base Inspection / Visit Charge</span>
                   <span>₹{booking.base_charge}</span>
@@ -245,8 +241,8 @@ export default function CheckoutPage() {
                   <span>₹{booking.distance_charge}</span>
                 </div>
                 {booking.emergency_surcharge > 0 && (
-                  <div className="flex justify-between text-rose-600 font-medium">
-                    <span>Emergency Priority Dispatch</span>
+                  <div className="flex justify-between text-[#D99119] font-medium">
+                    <span>Priority Dispatch Allowance</span>
                     <span>₹{booking.emergency_surcharge}</span>
                   </div>
                 )}
@@ -273,7 +269,7 @@ export default function CheckoutPage() {
                   <span>₹{booking.gst_tax}</span>
                 </div>
 
-                <div className="flex justify-between font-black text-base text-slate-900 pt-3 border-t border-slate-200">
+                <div className="flex justify-between font-black text-base text-[#252B2B] pt-3 border-t border-[#E6E8E5]">
                   <span>Grand Total</span>
                   <span>₹{booking.total_amount}</span>
                 </div>
@@ -282,7 +278,7 @@ export default function CheckoutPage() {
               <Button
                 variant="primary"
                 size="lg"
-                className="w-full mt-4"
+                className="w-full mt-4 bg-[#0F766E] hover:bg-[#0D645E]"
                 isLoading={isProcessing}
                 onClick={handlePayNow}
                 leftIcon={<ShieldCheck className="w-5 h-5" />}

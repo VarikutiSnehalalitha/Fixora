@@ -4,13 +4,8 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import {
   Calendar,
-  Clock,
   MapPin,
-  ArrowRight,
-  Filter,
-  CreditCard,
-  CheckCircle2,
-  AlertTriangle
+  ArrowRight
 } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
@@ -34,23 +29,23 @@ export default function CustomerBookingsPage() {
   });
 
   return (
-    <div className="min-h-screen bg-slate-50 py-10 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#FAF9F6] text-[#252B2B] py-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <h1 className="text-2xl font-black text-slate-900">Your Booking History</h1>
-            <p className="text-xs text-slate-500">View live tracking telemetry, tax invoices, and repair records.</p>
+            <h1 className="text-2xl font-black text-[#252B2B]">Your Booking History</h1>
+            <p className="text-xs text-[#687474]">View live tracking telemetry, tax invoices, and repair records.</p>
           </div>
 
-          <div className="flex items-center gap-2 bg-white p-1 rounded-xl border border-slate-200 text-xs">
+          <div className="flex items-center gap-2 bg-white p-1 rounded-xl border border-[#E6E8E5] text-xs shadow-sm">
             {(['all', 'active', 'completed', 'cancelled'] as const).map((tab) => (
               <button
                 key={tab}
                 onClick={() => setFilter(tab)}
                 className={`px-3 py-1.5 rounded-lg capitalize font-bold transition-all ${
                   filter === tab
-                    ? 'bg-brand-600 text-white shadow-sm'
-                    : 'text-slate-600 hover:text-slate-900'
+                    ? 'bg-[#0F766E] text-white shadow-sm'
+                    : 'text-[#687474] hover:text-[#252B2B]'
                 }`}
               >
                 {tab}
@@ -61,51 +56,51 @@ export default function CustomerBookingsPage() {
 
         <div className="space-y-4">
           {filteredBookings.length === 0 ? (
-            <Card className="text-center py-12 text-slate-500 text-xs space-y-3">
-              <Calendar className="w-8 h-8 mx-auto text-slate-300" />
+            <Card className="text-center py-12 text-[#687474] text-xs space-y-3 bg-white border-[#E6E8E5]">
+              <Calendar className="w-8 h-8 mx-auto text-[#687474]/50" />
               <p>No bookings match the selected filter.</p>
               <Link href="/emergency">
-                <Button variant="primary" size="sm">
+                <Button variant="primary" size="sm" className="bg-[#0F766E] hover:bg-[#0D645E]">
                   Book Service Now
                 </Button>
               </Link>
             </Card>
           ) : (
             filteredBookings.map((bkg) => (
-              <Card key={bkg.id} hoverEffect className="p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <Card key={bkg.id} hoverEffect className="p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-white border-[#E6E8E5]">
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
-                    <span className="text-xs font-mono font-bold text-slate-500">{bkg.booking_number}</span>
+                    <span className="text-xs font-mono font-bold text-[#687474]">{bkg.booking_number}</span>
                     <Badge status={bkg.status} />
-                    <span className="text-[11px] text-slate-400">
+                    <span className="text-[11px] text-[#687474]">
                       • {new Date(bkg.created_at).toLocaleDateString()}
                     </span>
                   </div>
 
                   <div>
-                    <h3 className="font-extrabold text-base text-slate-900">{bkg.issue_title}</h3>
-                    <p className="text-xs text-slate-500 flex items-center gap-1 mt-0.5">
-                      <MapPin className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                    <h3 className="font-extrabold text-base text-[#252B2B]">{bkg.issue_title}</h3>
+                    <p className="text-xs text-[#687474] flex items-center gap-1 mt-0.5">
+                      <MapPin className="w-3.5 h-3.5 text-[#0F766E] shrink-0" />
                       <span className="truncate max-w-md">{bkg.location.address}</span>
                     </p>
                   </div>
 
-                  <div className="text-xs text-slate-600 flex items-center gap-4">
-                    <span>Specialist: <strong>{bkg.provider_name || 'Dispatched Provider'}</strong></span>
-                    <span>Total: <strong>₹{bkg.total_amount}</strong></span>
-                    <span className="capitalize text-emerald-600 font-semibold">{bkg.payment_status}</span>
+                  <div className="text-xs text-[#687474] flex items-center gap-4">
+                    <span>Specialist: <strong className="text-[#252B2B]">{bkg.provider_name || 'Dispatched Specialist'}</strong></span>
+                    <span>Total: <strong className="text-[#252B2B]">₹{bkg.total_amount}</strong></span>
+                    <span className="capitalize text-[#21845B] font-semibold">{bkg.payment_status}</span>
                   </div>
                 </div>
 
                 <div className="flex sm:flex-col items-center gap-2 w-full sm:w-auto shrink-0">
                   <Link href={`/tracking/${bkg.id}`} className="w-full sm:w-auto">
-                    <Button variant="outline" size="sm" className="w-full" rightIcon={<ArrowRight className="w-3.5 h-3.5" />}>
-                      Live Tracker
+                    <Button variant="primary" size="sm" className="w-full bg-[#0F766E] hover:bg-[#0D645E]" rightIcon={<ArrowRight className="w-3.5 h-3.5" />}>
+                      Live Tracking
                     </Button>
                   </Link>
-                  <Link href={`/customer/bookings/${bkg.id}`} className="w-full sm:w-auto">
-                    <Button variant="secondary" size="sm" className="w-full">
-                      View Details
+                  <Link href={`/checkout/${bkg.id}`} className="w-full sm:w-auto">
+                    <Button variant="outline" size="sm" className="w-full">
+                      Invoice
                     </Button>
                   </Link>
                 </div>

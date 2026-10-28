@@ -37,16 +37,16 @@ export default function AdminDashboardPage() {
   const totalCommission = bookings.reduce((sum, b) => sum + (b.payment_status === 'paid' ? b.platform_commission : 0), 0);
 
   return (
-    <div className="min-h-screen bg-slate-50 py-10 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#FAF9F6] py-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-3xl border border-[#E6E8E5] shadow-xs">
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <Badge variant="emergency">Central Command</Badge>
-              <span className="text-xs text-slate-400">FixNow Operations Architecture</span>
+              <Badge variant="teal">Central Command</Badge>
+              <span className="text-xs text-[#687474]">FixNow Operations Architecture</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-black text-slate-900">
+            <h1 className="text-2xl sm:text-3xl font-black text-[#252B2B]">
               System Operations & Compliance Console
             </h1>
           </div>
@@ -62,32 +62,32 @@ export default function AdminDashboardPage() {
 
         {/* Operational Metrics Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <Card className="p-5 space-y-1">
-            <span className="text-xs text-slate-500 font-semibold uppercase">Total Platform GMV</span>
-            <div className="text-2xl sm:text-3xl font-black text-slate-900">₹{totalRevenue.toLocaleString()}</div>
-            <div className="text-[11px] text-emerald-600 font-bold flex items-center gap-1">
+          <Card className="p-5 space-y-1 bg-white border border-[#E6E8E5]">
+            <span className="text-xs text-[#687474] font-semibold uppercase">Total Platform GMV</span>
+            <div className="text-2xl sm:text-3xl font-black text-[#252B2B]">₹{totalRevenue.toLocaleString()}</div>
+            <div className="text-[11px] text-[#21845B] font-bold flex items-center gap-1">
               <TrendingUp className="w-3.5 h-3.5" /> +24% MoM
             </div>
           </Card>
 
-          <Card className="p-5 space-y-1">
-            <span className="text-xs text-slate-500 font-semibold uppercase">Platform Net Commission</span>
-            <div className="text-2xl sm:text-3xl font-black text-slate-900">₹{totalCommission.toLocaleString()}</div>
-            <div className="text-[11px] text-slate-500">15% Standard Margin</div>
+          <Card className="p-5 space-y-1 bg-white border border-[#E6E8E5]">
+            <span className="text-xs text-[#687474] font-semibold uppercase">Platform Net Commission</span>
+            <div className="text-2xl sm:text-3xl font-black text-[#252B2B]">₹{totalCommission.toLocaleString()}</div>
+            <div className="text-[11px] text-[#687474]">15% Standard Margin</div>
           </Card>
 
-          <Card className="p-5 space-y-1">
-            <span className="text-xs text-slate-500 font-semibold uppercase">Active Specialists</span>
-            <div className="text-2xl sm:text-3xl font-black text-slate-900">{providers.length}</div>
-            <div className="text-[11px] text-brand-600 font-semibold">
+          <Card className="p-5 space-y-1 bg-white border border-[#E6E8E5]">
+            <span className="text-xs text-[#687474] font-semibold uppercase">Active Specialists</span>
+            <div className="text-2xl sm:text-3xl font-black text-[#252B2B]">{providers.length}</div>
+            <div className="text-[11px] text-[#0F766E] font-semibold">
               {pendingProviders.length} Pending Approval
             </div>
           </Card>
 
-          <Card className="p-5 space-y-1">
-            <span className="text-xs text-slate-500 font-semibold uppercase">Live Bookings</span>
-            <div className="text-2xl sm:text-3xl font-black text-slate-900">{bookings.length}</div>
-            <div className="text-[11px] text-rose-600 font-semibold">
+          <Card className="p-5 space-y-1 bg-white border border-[#E6E8E5]">
+            <span className="text-xs text-[#687474] font-semibold uppercase">Live Bookings</span>
+            <div className="text-2xl sm:text-3xl font-black text-[#252B2B]">{bookings.length}</div>
+            <div className="text-[11px] text-[#D99119] font-semibold">
               {activeEmergencies.length} Roadside In Transit
             </div>
           </Card>
@@ -95,15 +95,15 @@ export default function AdminDashboardPage() {
 
         {/* Pending Verification Alert if any */}
         {pendingProviders.length > 0 && (
-          <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="bg-[#F3EBDD]/40 border border-[#D99119]/25 rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div className="space-y-1">
               <div className="flex items-center gap-2">
-                <AlertTriangle className="w-4 h-4 text-amber-600" />
-                <span className="text-xs font-bold uppercase text-amber-900">
+                <AlertTriangle className="w-4 h-4 text-[#D99119]" />
+                <span className="text-xs font-bold uppercase text-[#252B2B]">
                   {pendingProviders.length} Provider Application(s) Awaiting Document Verification
                 </span>
               </div>
-              <p className="text-xs text-amber-800">
+              <p className="text-xs text-[#687474]">
                 Aadhaar, Commercial Driver&apos;s License, or PESO safety certifications require manual review before these providers receive live jobs.
               </p>
             </div>
@@ -117,12 +117,12 @@ export default function AdminDashboardPage() {
 
         {/* Admin Navigation Hub */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <Card hoverEffect className="p-5 space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-blue-100 text-brand-700 flex items-center justify-center font-bold">
+          <Card hoverEffect className="p-5 space-y-3 bg-white border border-[#E6E8E5]">
+            <div className="w-10 h-10 rounded-xl bg-[#EAF5F2] text-[#0F766E] flex items-center justify-center font-bold">
               <Users className="w-5 h-5" />
             </div>
-            <h3 className="font-bold text-base text-slate-900">Provider Verifications</h3>
-            <p className="text-xs text-slate-500 leading-relaxed">
+            <h3 className="font-bold text-base text-[#252B2B]">Provider Verifications</h3>
+            <p className="text-xs text-[#687474] leading-relaxed">
               Verify identity documents, police background clearances, and mechanic diplomas.
             </p>
             <div className="pt-2">
@@ -134,12 +134,12 @@ export default function AdminDashboardPage() {
             </div>
           </Card>
 
-          <Card hoverEffect className="p-5 space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center font-bold">
+          <Card hoverEffect className="p-5 space-y-3 bg-white border border-[#E6E8E5]">
+            <div className="w-10 h-10 rounded-xl bg-[#F3EBDD] text-[#D99119] flex items-center justify-center font-bold">
               <Fuel className="w-5 h-5" />
             </div>
-            <h3 className="font-bold text-base text-slate-900">PESO Fuel Audits</h3>
-            <p className="text-xs text-slate-500 leading-relaxed">
+            <h3 className="font-bold text-base text-[#252B2B]">PESO Fuel Audits</h3>
+            <p className="text-xs text-[#687474] leading-relaxed">
               Enforce statutory Petroleum Rules 2002 compliance, verify bowsers, and set maximum delivery caps.
             </p>
             <div className="pt-2">
@@ -151,12 +151,12 @@ export default function AdminDashboardPage() {
             </div>
           </Card>
 
-          <Card hoverEffect className="p-5 space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
+          <Card hoverEffect className="p-5 space-y-3 bg-white border border-[#E6E8E5]">
+            <div className="w-10 h-10 rounded-xl bg-[#DDEFE7] text-[#21845B] flex items-center justify-center font-bold">
               <Activity className="w-5 h-5" />
             </div>
-            <h3 className="font-bold text-base text-slate-900">Live Dispatch & Bookings</h3>
-            <p className="text-xs text-slate-500 leading-relaxed">
+            <h3 className="font-bold text-base text-[#252B2B]">Live Dispatch & Bookings</h3>
+            <p className="text-xs text-[#687474] leading-relaxed">
               Monitor active state transitions, timeout retries, cancellations, and dispute triggers.
             </p>
             <div className="pt-2">
@@ -171,9 +171,9 @@ export default function AdminDashboardPage() {
 
         {/* Financial & Support Controls */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <Card hoverEffect className="p-5 space-y-3">
-            <h3 className="font-bold text-sm text-slate-900">Pricing & Surcharges Configuration</h3>
-            <p className="text-xs text-slate-500">
+          <Card hoverEffect className="p-5 space-y-3 bg-white border border-[#E6E8E5]">
+            <h3 className="font-bold text-sm text-[#252B2B]">Pricing & Surcharges Configuration</h3>
+            <p className="text-xs text-[#687474]">
               Configure base visit charges, night-time emergency surcharges (10 PM–6 AM), distance multipliers, and GST tax percentages.
             </p>
             <Link href="/admin/services">
@@ -183,9 +183,9 @@ export default function AdminDashboardPage() {
             </Link>
           </Card>
 
-          <Card hoverEffect className="p-5 space-y-3">
-            <h3 className="font-bold text-sm text-slate-900">Support Tickets & System Audit Logs</h3>
-            <p className="text-xs text-slate-500">
+          <Card hoverEffect className="p-5 space-y-3 bg-white border border-[#E6E8E5]">
+            <h3 className="font-bold text-sm text-[#252B2B]">Support Tickets & System Audit Logs</h3>
+            <p className="text-xs text-[#687474]">
               Inspect immutable audit records for regulatory scrutiny and resolve customer dispute tickets.
             </p>
             <Link href="/admin/support">

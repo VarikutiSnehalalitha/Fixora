@@ -43,37 +43,37 @@ export default function AdminFuelPartnersPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 py-10 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#FAF9F6] py-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto space-y-6">
-        <Link href="/admin" className="text-xs font-bold text-slate-500 hover:text-slate-800 flex items-center gap-1">
+        <Link href="/admin" className="text-xs font-bold text-[#687474] hover:text-[#252B2B] flex items-center gap-1 transition-colors">
           <ArrowLeft className="w-4 h-4" />
           <span>Back to Admin Console</span>
         </Link>
 
         <div>
-          <h1 className="text-2xl font-black text-slate-900">PESO Fuel Partner Audit & Licensing</h1>
-          <p className="text-xs text-slate-500">
+          <h1 className="text-2xl font-black text-[#252B2B]">PESO Fuel Partner Audit & Licensing</h1>
+          <p className="text-xs text-[#687474]">
             Enforce Petroleum Rules 2002 compliance. Suspend suppliers with expired or non-compliant equipment.
           </p>
         </div>
 
         <div className="space-y-4">
           {authorizations.map((auth) => (
-            <Card key={auth.id} className="p-6 space-y-4 bg-white">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-3">
+            <Card key={auth.id} className="p-6 space-y-4 bg-white border border-[#E6E8E5]">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#E6E8E5] pb-3">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-2xl bg-purple-100 text-purple-700 flex items-center justify-center font-bold">
+                  <div className="w-12 h-12 rounded-2xl bg-[#F3EBDD] text-[#D99119] flex items-center justify-center font-bold">
                     <Fuel className="w-6 h-6" />
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
-                      <h3 className="font-extrabold text-base text-slate-900">{auth.company_name}</h3>
-                      <Badge variant={auth.status === 'active' ? 'success' : 'emergency'}>
+                      <h3 className="font-extrabold text-base text-[#252B2B]">{auth.company_name}</h3>
+                      <Badge variant={auth.status === 'active' ? 'success' : 'danger'}>
                         {auth.status.toUpperCase()}
                       </Badge>
                     </div>
-                    <p className="text-xs text-slate-500 font-mono">
-                      PESO License: <strong>{auth.peso_license_number}</strong>
+                    <p className="text-xs text-[#687474] font-mono">
+                      PESO License: <strong className="text-[#252B2B]">{auth.peso_license_number}</strong>
                     </p>
                   </div>
                 </div>
@@ -92,22 +92,22 @@ export default function AdminFuelPartnersPage() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-                <div className="p-3 bg-slate-50 rounded-xl space-y-1">
-                  <span className="font-bold text-slate-500 uppercase text-[10px]">Statutory License Expiry</span>
-                  <div className="font-bold text-slate-900">{auth.license_expiry_date}</div>
-                  <div className="text-emerald-600 font-semibold">Valid & Verified</div>
+                <div className="p-3 bg-[#FAF9F6] rounded-xl space-y-1 border border-[#E6E8E5]">
+                  <span className="font-bold text-[#687474] uppercase text-[10px]">Statutory License Expiry</span>
+                  <div className="font-bold text-[#252B2B]">{auth.license_expiry_date}</div>
+                  <div className="text-[#21845B] font-semibold">Valid & Verified</div>
                 </div>
 
-                <div className="p-3 bg-slate-50 rounded-xl space-y-1">
-                  <span className="font-bold text-slate-500 uppercase text-[10px]">Dispensing Vehicle / Bowser</span>
-                  <div className="font-bold text-slate-900 font-mono">{auth.approved_dispensing_vehicle_number}</div>
-                  <div className="text-slate-500">Fabricated under PESO specs</div>
+                <div className="p-3 bg-[#FAF9F6] rounded-xl space-y-1 border border-[#E6E8E5]">
+                  <span className="font-bold text-[#687474] uppercase text-[10px]">Dispensing Vehicle / Bowser</span>
+                  <div className="font-bold text-[#252B2B] font-mono">{auth.approved_dispensing_vehicle_number}</div>
+                  <div className="text-[#687474]">Fabricated under PESO specs</div>
                 </div>
 
-                <div className="p-3 bg-slate-50 rounded-xl space-y-1">
-                  <span className="font-bold text-slate-500 uppercase text-[10px]">Authorized Products</span>
-                  <div className="font-bold text-slate-900 capitalize">{auth.authorized_fuel_types.join(', ')}</div>
-                  <div className="text-slate-500">Max Cap: {auth.max_approved_quantity_liters}L per incident</div>
+                <div className="p-3 bg-[#FAF9F6] rounded-xl space-y-1 border border-[#E6E8E5]">
+                  <span className="font-bold text-[#687474] uppercase text-[10px]">Authorized Products</span>
+                  <div className="font-bold text-[#252B2B] capitalize">{auth.authorized_fuel_types.join(', ')}</div>
+                  <div className="text-[#687474]">Max Cap: {auth.max_approved_quantity_liters}L per incident</div>
                 </div>
               </div>
             </Card>

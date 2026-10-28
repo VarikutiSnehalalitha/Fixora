@@ -14,8 +14,7 @@ import {
   Menu,
   X,
   ChevronDown,
-  Layers,
-  Zap
+  Layers
 } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { fixNowStore } from '@/lib/store';
@@ -71,84 +70,84 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200">
-      {/* Top emergency announcement bar */}
-      <div className="bg-slate-900 text-white text-xs py-1.5 px-4 flex items-center justify-between">
+    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-[#E6E8E5]">
+      {/* Top announcement bar - clean, calm, warm off-white */}
+      <div className="bg-[#FAF9F6] border-b border-[#E6E8E5] text-xs py-1.5 px-4 flex items-center justify-between text-[#687474]">
         <div className="flex items-center gap-2 mx-auto sm:mx-0">
-          <span className="flex h-2 w-2 rounded-full bg-red-500 animate-pulse"></span>
-          <span className="font-medium text-slate-200">
+          <span className="flex h-2 w-2 rounded-full bg-[#21845B]"></span>
+          <span className="font-medium text-[#252B2B]">
             24/7 Nationwide Rapid Roadside & Home Repair Dispatch
           </span>
-          <span className="hidden md:inline text-slate-400">| Emergency Helpline: 1800-FIX-NOW (24x7 Free)</span>
+          <span className="hidden md:inline text-[#687474]">| Toll-Free Helpline: 1800-FIX-NOW (24x7)</span>
         </div>
         
         {/* Role switcher pill */}
         <div className="hidden sm:flex items-center gap-2 relative">
-          <span className="text-slate-400 text-[11px] font-medium flex items-center gap-1">
-            <Layers className="w-3 h-3 text-brand-400" /> Switch Demo Role:
+          <span className="text-[#687474] text-[11px] font-medium flex items-center gap-1">
+            <Layers className="w-3 h-3 text-[#0F766E]" /> Switch Perspective:
           </span>
           <div className="relative">
             <button
               onClick={() => setIsRoleDropdownOpen(!isRoleDropdownOpen)}
-              className="bg-slate-800 hover:bg-slate-700 text-slate-200 px-2.5 py-0.5 rounded text-[11px] font-semibold border border-slate-700 flex items-center gap-1 transition-colors"
+              className="bg-white hover:bg-[#FAF9F6] text-[#252B2B] px-2.5 py-0.5 rounded-lg text-[11px] font-semibold border border-[#E6E8E5] flex items-center gap-1 transition-colors shadow-sm"
             >
               <span className="capitalize">{currentUser?.role.replace('_', ' ')}</span>
-              <ChevronDown className="w-3 h-3 text-slate-400" />
+              <ChevronDown className="w-3 h-3 text-[#687474]" />
             </button>
 
             {isRoleDropdownOpen && (
-              <div className="absolute right-0 mt-1 w-52 bg-white text-slate-800 rounded-xl shadow-xl border border-slate-100 py-1.5 z-50 animate-in fade-in">
-                <div className="px-3 py-1 text-[10px] uppercase font-bold text-slate-400 border-b border-slate-100">
+              <div className="absolute right-0 mt-1 w-52 bg-white text-[#252B2B] rounded-xl shadow-xl border border-[#E6E8E5] py-1.5 z-50 animate-in fade-in">
+                <div className="px-3 py-1 text-[10px] uppercase font-bold text-[#687474] border-b border-[#E6E8E5]">
                   Select User Perspective
                 </div>
                 <button
                   onClick={() => handleRoleSwitch('customer')}
-                  className="w-full text-left px-3 py-2 text-xs hover:bg-slate-50 flex items-center gap-2"
+                  className="w-full text-left px-3 py-2 text-xs hover:bg-[#FAF9F6] flex items-center gap-2"
                 >
-                  <User className="w-3.5 h-3.5 text-brand-600" />
+                  <User className="w-3.5 h-3.5 text-[#0F766E]" />
                   <div>
-                    <div className="font-semibold text-slate-800">Customer</div>
-                    <div className="text-[10px] text-slate-500">Book, Track & Pay</div>
+                    <div className="font-semibold text-[#252B2B]">Customer</div>
+                    <div className="text-[10px] text-[#687474]">Book, Track & Pay</div>
                   </div>
                 </button>
                 <button
                   onClick={() => handleRoleSwitch('mechanic')}
-                  className="w-full text-left px-3 py-2 text-xs hover:bg-slate-50 flex items-center gap-2"
+                  className="w-full text-left px-3 py-2 text-xs hover:bg-[#FAF9F6] flex items-center gap-2"
                 >
-                  <Car className="w-3.5 h-3.5 text-emerald-600" />
+                  <Car className="w-3.5 h-3.5 text-[#21845B]" />
                   <div>
-                    <div className="font-semibold text-slate-800">Vehicle Mechanic</div>
-                    <div className="text-[10px] text-slate-500">Incoming Jobs & Quotes</div>
+                    <div className="font-semibold text-[#252B2B]">Vehicle Mechanic</div>
+                    <div className="text-[10px] text-[#687474]">Incoming Jobs & Quotes</div>
                   </div>
                 </button>
                 <button
                   onClick={() => handleRoleSwitch('appliance_tech')}
-                  className="w-full text-left px-3 py-2 text-xs hover:bg-slate-50 flex items-center gap-2"
+                  className="w-full text-left px-3 py-2 text-xs hover:bg-[#FAF9F6] flex items-center gap-2"
                 >
-                  <Home className="w-3.5 h-3.5 text-amber-600" />
+                  <Home className="w-3.5 h-3.5 text-[#D99119]" />
                   <div>
-                    <div className="font-semibold text-slate-800">Appliance Tech</div>
-                    <div className="text-[10px] text-slate-500">Repairs & Diagnosis</div>
+                    <div className="font-semibold text-[#252B2B]">Appliance Tech</div>
+                    <div className="text-[10px] text-[#687474]">Repairs & Diagnosis</div>
                   </div>
                 </button>
                 <button
                   onClick={() => handleRoleSwitch('fuel_partner')}
-                  className="w-full text-left px-3 py-2 text-xs hover:bg-slate-50 flex items-center gap-2"
+                  className="w-full text-left px-3 py-2 text-xs hover:bg-[#FAF9F6] flex items-center gap-2"
                 >
-                  <Fuel className="w-3.5 h-3.5 text-purple-600" />
+                  <Fuel className="w-3.5 h-3.5 text-[#0F766E]" />
                   <div>
-                    <div className="font-semibold text-slate-800">Authorized Fuel Partner</div>
-                    <div className="text-[10px] text-slate-500">PESO Regulated Dispensing</div>
+                    <div className="font-semibold text-[#252B2B]">Authorized Fuel Partner</div>
+                    <div className="text-[10px] text-[#687474]">PESO Regulated Dispensing</div>
                   </div>
                 </button>
                 <button
                   onClick={() => handleRoleSwitch('admin')}
-                  className="w-full text-left px-3 py-2 text-xs hover:bg-slate-50 flex items-center gap-2 border-t border-slate-100"
+                  className="w-full text-left px-3 py-2 text-xs hover:bg-[#FAF9F6] flex items-center gap-2 border-t border-[#E6E8E5]"
                 >
-                  <ShieldCheck className="w-3.5 h-3.5 text-red-700" />
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#0F766E]" />
                   <div>
-                    <div className="font-semibold text-slate-800">System Administrator</div>
-                    <div className="text-[10px] text-slate-500">Verifications & Analytics</div>
+                    <div className="font-semibold text-[#252B2B]">System Administrator</div>
+                    <div className="text-[10px] text-[#687474]">Verifications & Analytics</div>
                   </div>
                 </button>
               </div>
@@ -160,57 +159,77 @@ export const Navbar: React.FC = () => {
       {/* Main navigation */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
-          {/* Logo */}
+          {/* Logo with FixNow name in charcoal and a small teal 24/7 indicator */}
           <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="w-10 h-10 rounded-xl bg-brand-700 flex items-center justify-center text-white shadow-md group-hover:bg-brand-800 transition-colors">
+            <div className="w-10 h-10 rounded-xl bg-[#0F766E] flex items-center justify-center text-white shadow-sm group-hover:bg-[#0D645E] transition-colors">
               <Wrench className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
             </div>
             <div>
-              <div className="text-xl font-extrabold tracking-tight text-slate-900 flex items-center gap-1">
+              <div className="text-xl font-extrabold tracking-tight text-[#252B2B] flex items-center gap-1.5">
                 <span>FixNow</span>
-                <span className="text-xs bg-red-800 text-white font-bold px-1.5 py-0.5 rounded-md tracking-wider">
+                <span className="text-[11px] bg-[#EAF5F2] text-[#0F766E] border border-[#0F766E]/20 font-bold px-1.5 py-0.5 rounded-md">
                   24/7
                 </span>
               </div>
-              <p className="text-[10px] font-medium text-slate-500 -mt-0.5 tracking-wide">
+              <p className="text-[10px] font-medium text-[#687474] -mt-0.5 tracking-wide">
                 ASSISTANCE & REPAIR PLATFORM
               </p>
             </div>
           </Link>
 
           {/* Desktop Nav Links */}
-          <nav className="hidden lg:flex items-center gap-6 text-sm font-semibold text-slate-700">
+          <nav className="hidden lg:flex items-center gap-7 text-sm font-semibold text-[#252B2B]">
             <Link
               href="/emergency"
-              className="flex items-center gap-1.5 text-red-800 hover:text-red-900 font-bold px-3 py-1.5 rounded-lg hover:bg-red-50 transition-colors"
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-colors ${
+                pathname === '/emergency'
+                  ? 'text-[#0F766E] bg-[#EAF5F2]'
+                  : 'text-[#252B2B] hover:text-[#0F766E] hover:bg-[#FAF9F6]'
+              }`}
             >
-              <Zap className="w-4 h-4 fill-red-700 text-red-700" />
+              <AlertTriangle className="w-4 h-4 text-[#D99119]" />
               <span>Emergency Help</span>
             </Link>
             <Link
               href="/services/vehicle"
-              className="hover:text-brand-600 transition-colors flex items-center gap-1.5"
+              className={`flex items-center gap-1.5 transition-colors ${
+                pathname === '/services/vehicle'
+                  ? 'text-[#0F766E] font-bold'
+                  : 'text-[#252B2B] hover:text-[#0F766E]'
+              }`}
             >
-              <Car className="w-4 h-4 text-slate-400" />
+              <Car className="w-4 h-4 text-[#687474]" />
               <span>Vehicle Breakdown</span>
             </Link>
             <Link
               href="/services/appliance"
-              className="hover:text-brand-600 transition-colors flex items-center gap-1.5"
+              className={`flex items-center gap-1.5 transition-colors ${
+                pathname === '/services/appliance'
+                  ? 'text-[#0F766E] font-bold'
+                  : 'text-[#252B2B] hover:text-[#0F766E]'
+              }`}
             >
-              <Home className="w-4 h-4 text-slate-400" />
+              <Home className="w-4 h-4 text-[#687474]" />
               <span>Home Appliances</span>
             </Link>
             <Link
               href="/services/fuel"
-              className="hover:text-brand-600 transition-colors flex items-center gap-1.5"
+              className={`flex items-center gap-1.5 transition-colors ${
+                pathname === '/services/fuel'
+                  ? 'text-[#0F766E] font-bold'
+                  : 'text-[#252B2B] hover:text-[#0F766E]'
+              }`}
             >
-              <Fuel className="w-4 h-4 text-slate-400" />
+              <Fuel className="w-4 h-4 text-[#687474]" />
               <span>Emergency Fuel</span>
             </Link>
             <Link
               href="/petroleum-compliance"
-              className="hover:text-brand-600 text-xs font-medium text-slate-500 transition-colors"
+              className={`text-xs font-medium transition-colors ${
+                pathname === '/petroleum-compliance'
+                  ? 'text-[#0F766E] font-bold'
+                  : 'text-[#687474] hover:text-[#0F766E]'
+              }`}
             >
               PESO Compliance
             </Link>
@@ -219,19 +238,19 @@ export const Navbar: React.FC = () => {
           {/* Right Action buttons */}
           <div className="hidden sm:flex items-center gap-3">
             <Link href={getDashboardLink()}>
-              <Button variant="outline" size="sm" leftIcon={<User className="w-4 h-4" />}>
+              <Button variant="outline" size="sm" leftIcon={<User className="w-4 h-4 text-[#687474]" />}>
                 Dashboard ({currentUser?.role})
               </Button>
             </Link>
 
             <Link href="/emergency">
               <Button
-                variant="emergency"
+                variant="primary"
                 size="sm"
-                leftIcon={<Zap className="w-4 h-4 fill-white" />}
-                className="emergency-pulse"
+                leftIcon={<AlertTriangle className="w-4 h-4 text-[#D99119]" />}
+                className="bg-[#0F766E] hover:bg-[#0D645E] text-white shadow-sm font-semibold"
               >
-                Instant SOS
+                Emergency SOS
               </Button>
             </Link>
           </div>
@@ -239,14 +258,14 @@ export const Navbar: React.FC = () => {
           {/* Mobile hamburger */}
           <div className="lg:hidden flex items-center gap-2">
             <Link href="/emergency">
-              <button className="bg-red-800 text-white p-2 rounded-lg text-xs font-bold flex items-center gap-1">
-                <Zap className="w-4 h-4 fill-white" />
+              <button className="bg-[#0F766E] text-white px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5">
+                <AlertTriangle className="w-4 h-4 text-[#D99119]" />
                 <span>SOS</span>
               </button>
             </Link>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+              className="p-2 rounded-lg text-[#687474] hover:text-[#252B2B] hover:bg-[#FAF9F6] border border-[#E6E8E5]"
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -256,9 +275,9 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Drawer Menu */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-6 space-y-3">
-          <div className="p-3 bg-slate-50 rounded-xl border border-slate-100">
-            <div className="text-xs font-semibold text-slate-500 uppercase mb-2">Switch View Role</div>
+        <div className="lg:hidden border-t border-[#E6E8E5] bg-white px-4 pt-3 pb-6 space-y-3">
+          <div className="p-3 bg-[#FAF9F6] rounded-xl border border-[#E6E8E5]">
+            <div className="text-xs font-semibold text-[#687474] uppercase mb-2">Switch View Perspective</div>
             <div className="grid grid-cols-2 gap-2">
               {(['customer', 'mechanic', 'appliance_tech', 'fuel_partner', 'admin'] as UserRole[]).map(r => (
                 <button
@@ -269,8 +288,8 @@ export const Navbar: React.FC = () => {
                   }}
                   className={`text-xs p-2 rounded-lg text-left font-medium border ${
                     currentUser?.role === r
-                      ? 'bg-brand-50 border-brand-300 text-brand-700 font-bold'
-                      : 'bg-white border-slate-200 text-slate-700'
+                      ? 'bg-[#EAF5F2] border-[#0F766E] text-[#0F766E] font-bold'
+                      : 'bg-white border-[#E6E8E5] text-[#252B2B]'
                   }`}
                 >
                   {r.replace('_', ' ').toUpperCase()}
@@ -283,47 +302,47 @@ export const Navbar: React.FC = () => {
             <Link
               href="/emergency"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="p-2.5 rounded-lg bg-red-50 text-red-900 border border-red-200 font-bold flex items-center gap-2"
+              className="p-2.5 rounded-lg bg-[#EAF5F2] text-[#0F766E] font-bold flex items-center gap-2 border border-[#A7D9CD]"
             >
-              <Zap className="w-4 h-4 text-red-700" />
-              <span>Emergency Help (Instant SOS)</span>
+              <AlertTriangle className="w-4 h-4 text-[#D99119]" />
+              <span>Emergency Help (Instant Request)</span>
             </Link>
             <Link
               href="/services/vehicle"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="p-2.5 rounded-lg hover:bg-slate-50 text-slate-800 flex items-center gap-2"
+              className="p-2.5 rounded-lg hover:bg-[#FAF9F6] text-[#252B2B] flex items-center gap-2"
             >
-              <Car className="w-4 h-4 text-slate-500" />
+              <Car className="w-4 h-4 text-[#687474]" />
               <span>Vehicle Breakdown & Towing</span>
             </Link>
             <Link
               href="/services/appliance"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="p-2.5 rounded-lg hover:bg-slate-50 text-slate-800 flex items-center gap-2"
+              className="p-2.5 rounded-lg hover:bg-[#FAF9F6] text-[#252B2B] flex items-center gap-2"
             >
-              <Home className="w-4 h-4 text-slate-500" />
+              <Home className="w-4 h-4 text-[#687474]" />
               <span>Home Appliance Servicing</span>
             </Link>
             <Link
               href="/services/fuel"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="p-2.5 rounded-lg hover:bg-slate-50 text-slate-800 flex items-center gap-2"
+              className="p-2.5 rounded-lg hover:bg-[#FAF9F6] text-[#252B2B] flex items-center gap-2"
             >
-              <Fuel className="w-4 h-4 text-slate-500" />
+              <Fuel className="w-4 h-4 text-[#687474]" />
               <span>Regulated Fuel Delivery</span>
             </Link>
             <Link
               href={getDashboardLink()}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="p-2.5 rounded-lg bg-slate-100 text-slate-900 font-bold flex items-center gap-2"
+              className="p-2.5 rounded-lg bg-[#FAF9F6] text-[#252B2B] font-bold flex items-center gap-2 border border-[#E6E8E5]"
             >
-              <User className="w-4 h-4 text-brand-600" />
+              <User className="w-4 h-4 text-[#0F766E]" />
               <span>Go to {currentUser?.role} Dashboard</span>
             </Link>
             <Link
               href="/provider/apply"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="p-2.5 rounded-lg border border-brand-200 text-brand-700 font-bold flex items-center gap-2"
+              className="p-2.5 rounded-lg border border-[#A7D9CD] text-[#0F766E] font-bold flex items-center gap-2"
             >
               <ShieldCheck className="w-4 h-4" />
               <span>Join as Verified Partner</span>

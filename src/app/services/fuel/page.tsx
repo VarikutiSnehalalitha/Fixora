@@ -2,17 +2,9 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
 import {
   Fuel,
-  ShieldCheck,
-  AlertTriangle,
-  MapPin,
-  CheckCircle2,
-  Info,
-  ArrowRight,
   Navigation,
-  FileText
 } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
@@ -106,15 +98,15 @@ export default function FuelServicePage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#FAF9F6] text-[#252B2B] py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto space-y-10">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto space-y-2">
-          <Badge variant="emergency">PESO Regulated Module</Badge>
-          <h1 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
+          <Badge variant="info">PESO Regulated Module</Badge>
+          <h1 className="text-3xl sm:text-4xl font-black text-[#252B2B] tracking-tight">
             Emergency Roadside Fuel Supply
           </h1>
-          <p className="text-slate-600 text-xs sm:text-sm">
+          <p className="text-[#687474] text-xs sm:text-sm">
             Statutory roadside assistance delivered exclusively by certified, PESO-inspected mobile partners in approved containers.
           </p>
         </div>
@@ -131,7 +123,7 @@ export default function FuelServicePage() {
 
         <form onSubmit={handleFuelBooking} className="space-y-6">
           <Card className="space-y-6">
-            <h3 className="font-bold text-base text-slate-900 border-b border-slate-100 pb-3">
+            <h3 className="font-bold text-base text-[#252B2B] border-b border-[#E6E8E5] pb-3">
               1. Fuel Type & Stranded Vehicle Details
             </h3>
 
@@ -145,18 +137,18 @@ export default function FuelServicePage() {
                 }}
                 className={`p-5 rounded-2xl border text-left transition-all ${
                   fuelType === 'diesel'
-                    ? 'border-brand-600 bg-brand-50/70 shadow-sm'
-                    : 'border-slate-200 bg-white hover:border-slate-300'
+                    ? 'border-[#0F766E] bg-[#EAF5F2] shadow-sm'
+                    : 'border-[#E6E8E5] bg-white hover:border-[#0F766E]/40'
                 }`}
               >
                 <div className="flex items-center justify-between mb-2">
-                  <div className="w-10 h-10 rounded-xl bg-blue-100 text-brand-700 flex items-center justify-center font-bold">
+                  <div className="w-10 h-10 rounded-xl bg-[#EAF5F2] text-[#0F766E] flex items-center justify-center font-bold">
                     D
                   </div>
                   <Badge variant="info">Up to 20L Max</Badge>
                 </div>
-                <div className="font-bold text-slate-900 text-base">Emergency Diesel</div>
-                <div className="text-xs text-slate-500 mt-1">₹{PESO_REGULATIONS.DIESEL_BASE_PRICE_PER_LITER}/L + HazMat Transport</div>
+                <div className="font-bold text-[#252B2B] text-base">Emergency Diesel</div>
+                <div className="text-xs text-[#687474] mt-1">₹{PESO_REGULATIONS.DIESEL_BASE_PRICE_PER_LITER}/L + HazMat Transport</div>
               </button>
 
               <button
@@ -167,24 +159,24 @@ export default function FuelServicePage() {
                 }}
                 className={`p-5 rounded-2xl border text-left transition-all ${
                   fuelType === 'petrol'
-                    ? 'border-red-800 bg-red-50/40 shadow-sm'
-                    : 'border-slate-200 bg-white hover:border-slate-300'
+                    ? 'border-[#0F766E] bg-[#EAF5F2] shadow-sm'
+                    : 'border-[#E6E8E5] bg-white hover:border-[#0F766E]/40'
                 }`}
               >
                 <div className="flex items-center justify-between mb-2">
-                  <div className="w-10 h-10 rounded-xl bg-red-900 text-white flex items-center justify-center font-bold">
+                  <div className="w-10 h-10 rounded-xl bg-[#F3EBDD] text-[#8C6D3B] flex items-center justify-center font-bold">
                     P
                   </div>
-                  <Badge variant="emergency">Strict 5L Cap</Badge>
+                  <Badge variant="warning">Strict 5L Cap</Badge>
                 </div>
-                <div className="font-bold text-slate-900 text-base">Emergency Petrol</div>
-                <div className="text-xs text-slate-500 mt-1">₹{PESO_REGULATIONS.PETROL_BASE_PRICE_PER_LITER}/L • Sealed Safety Can</div>
+                <div className="font-bold text-[#252B2B] text-base">Emergency Petrol</div>
+                <div className="text-xs text-[#687474] mt-1">₹{PESO_REGULATIONS.PETROL_BASE_PRICE_PER_LITER}/L • Sealed Safety Can</div>
               </button>
             </div>
 
             {/* Quantity Selector */}
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-2">
+              <label className="block text-xs font-semibold text-[#252B2B] mb-2">
                 Select Quantity (Statutory Caps Enforced)
               </label>
               <div className="flex flex-wrap gap-3">
@@ -196,8 +188,8 @@ export default function FuelServicePage() {
                       onClick={() => setQuantityLiters(liters)}
                       className={`px-5 py-2.5 rounded-xl border text-sm font-bold transition-all ${
                         quantityLiters === liters
-                          ? 'border-brand-600 bg-brand-600 text-white'
-                          : 'border-slate-200 bg-white text-slate-800 hover:bg-slate-50'
+                          ? 'border-[#0F766E] bg-[#0F766E] text-white shadow-sm'
+                          : 'border-[#E6E8E5] bg-white text-[#252B2B] hover:bg-[#FAF9F6]'
                       }`}
                     >
                       {liters} Litres
@@ -211,8 +203,8 @@ export default function FuelServicePage() {
                       onClick={() => setQuantityLiters(liters)}
                       className={`px-5 py-2.5 rounded-xl border text-sm font-bold transition-all ${
                         quantityLiters === liters
-                          ? 'border-red-800 bg-red-800 text-white'
-                          : 'border-slate-200 bg-white text-slate-800 hover:bg-slate-50'
+                          ? 'border-[#0F766E] bg-[#0F766E] text-white shadow-sm'
+                          : 'border-[#E6E8E5] bg-white text-[#252B2B] hover:bg-[#FAF9F6]'
                       }`}
                     >
                       {liters} Litres (Max Cap)
@@ -225,11 +217,11 @@ export default function FuelServicePage() {
             {/* Vehicle Inputs */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">Vehicle Category</label>
+                <label className="block text-xs font-semibold text-[#252B2B] mb-1">Vehicle Category</label>
                 <select
                   value={vehicleType}
                   onChange={(e) => setVehicleType(e.target.value)}
-                  className="w-full px-3.5 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none"
+                  className="w-full px-3.5 py-2.5 text-sm bg-[#FAF9F6] border border-[#E6E8E5] rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0F766E]"
                 >
                   <option value="car">Passenger Car / SUV</option>
                   <option value="bike">Two-Wheeler / Motorcycle</option>
@@ -238,72 +230,72 @@ export default function FuelServicePage() {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">License Plate Number</label>
+                <label className="block text-xs font-semibold text-[#252B2B] mb-1">License Plate Number</label>
                 <input
                   type="text"
                   value={licensePlate}
                   onChange={(e) => setLicensePlate(e.target.value)}
                   placeholder="KA 05 MN 4821"
                   required
-                  className="w-full px-3.5 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl uppercase font-mono tracking-wider focus:bg-white focus:outline-none"
+                  className="w-full px-3.5 py-2.5 text-sm bg-[#FAF9F6] border border-[#E6E8E5] rounded-xl uppercase font-mono tracking-wider focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0F766E]"
                 />
               </div>
 
               <div className="sm:col-span-2">
-                <label className="block text-xs font-semibold text-slate-700 mb-1">Reason for Stranded Emergency</label>
+                <label className="block text-xs font-semibold text-[#252B2B] mb-1">Reason for Stranded Emergency</label>
                 <input
                   type="text"
                   value={emergencyReason}
                   onChange={(e) => setEmergencyReason(e.target.value)}
                   placeholder="e.g. Fuel gauge failure, stranded between highway toll gates"
                   required
-                  className="w-full px-3.5 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none"
+                  className="w-full px-3.5 py-2.5 text-sm bg-[#FAF9F6] border border-[#E6E8E5] rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0F766E]"
                 />
               </div>
 
               <div className="sm:col-span-2">
-                <label className="block text-xs font-semibold text-slate-700 mb-1">Exact Delivery Coordinates / Address</label>
+                <label className="block text-xs font-semibold text-[#252B2B] mb-1">Exact Delivery Coordinates / Address</label>
                 <input
                   type="text"
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
                   required
-                  className="w-full px-3.5 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none"
+                  className="w-full px-3.5 py-2.5 text-sm bg-[#FAF9F6] border border-[#E6E8E5] rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0F766E]"
                 />
               </div>
             </div>
 
             {/* Price Preview */}
-            <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2 text-xs">
-              <div className="font-bold text-slate-900 text-sm mb-1">Estimated Cost Breakdown</div>
-              <div className="flex justify-between text-slate-600">
+            <div className="p-4 bg-[#FAF9F6] rounded-2xl border border-[#E6E8E5] space-y-2 text-xs">
+              <div className="font-bold text-[#252B2B] text-sm mb-1">Estimated Cost Breakdown</div>
+              <div className="flex justify-between text-[#687474]">
                 <span>Fuel Cost ({quantityLiters}L @ ₹{fuelType === 'diesel' ? PESO_REGULATIONS.DIESEL_BASE_PRICE_PER_LITER : PESO_REGULATIONS.PETROL_BASE_PRICE_PER_LITER}/L)</span>
                 <span>₹{Math.round(quantityLiters * (fuelType === 'diesel' ? PESO_REGULATIONS.DIESEL_BASE_PRICE_PER_LITER : PESO_REGULATIONS.PETROL_BASE_PRICE_PER_LITER))}</span>
               </div>
-              <div className="flex justify-between text-slate-600">
+              <div className="flex justify-between text-[#687474]">
                 <span>Certified Hazardous Delivery & Base Fee</span>
                 <span>₹{pricing.baseCharge + PESO_REGULATIONS.HAZARDOUS_DELIVERY_SURCHARGE}</span>
               </div>
-              <div className="flex justify-between text-slate-600">
+              <div className="flex justify-between text-[#687474]">
                 <span>GST (18%)</span>
                 <span>₹{pricing.gstTax}</span>
               </div>
-              <div className="flex justify-between font-extrabold text-sm text-slate-900 pt-2 border-t border-slate-200">
+              <div className="flex justify-between font-extrabold text-sm text-[#252B2B] pt-2 border-t border-[#E6E8E5]">
                 <span>Total Amount</span>
                 <span>₹{pricing.totalAmount}</span>
               </div>
             </div>
 
             {/* Statutory Checkbox */}
-            <div className="p-4 bg-amber-50/80 rounded-2xl border border-amber-200">
+            <div className="p-4 bg-[#FEF9EE] rounded-2xl border border-[#FBE2AC]">
               <label className="flex items-start gap-3 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={agreedToPESORules}
                   onChange={(e) => setAgreedToPESORules(e.target.checked)}
-                  className="mt-1 h-4 w-4 rounded border-amber-300 text-brand-600 focus:ring-brand-500"
+                  className="mt-1 h-4 w-4 rounded border-[#FBE2AC] text-[#0F766E] focus:ring-[#0F766E]"
                 />
-                <span className="text-xs text-amber-900 leading-relaxed">
+                <span className="text-xs text-[#753E0A] leading-relaxed">
                   I certify under penalty of law that this fuel is required solely for an emergency stranded vehicle on the roadside, and I agree to verify delivery with the 4-digit OTP code provided to the PESO-authorized delivery team.
                 </span>
               </label>
@@ -311,9 +303,9 @@ export default function FuelServicePage() {
 
             <Button
               type="submit"
-              variant="emergency"
+              variant="primary"
               size="lg"
-              className="w-full"
+              className="w-full bg-[#0F766E] hover:bg-[#0D645E]"
               isLoading={isSubmitting}
               leftIcon={<Fuel className="w-5 h-5" />}
             >
@@ -326,8 +318,8 @@ export default function FuelServicePage() {
         <div className="space-y-4 pt-6">
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="font-extrabold text-lg text-slate-900">Nearby 24/7 Verified Petrol Stations</h3>
-              <p className="text-xs text-slate-500">
+              <h3 className="font-extrabold text-lg text-[#252B2B]">Nearby 24/7 Verified Petrol Stations</h3>
+              <p className="text-xs text-[#687474]">
                 If mobile delivery is unavailable or you are within pushing/walking distance:
               </p>
             </div>
@@ -336,24 +328,24 @@ export default function FuelServicePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {NEARBY_AUTHORIZED_PETROL_PUMPS.map((pump, idx) => (
-              <Card key={idx} className="p-4 space-y-3 bg-white">
+              <Card key={idx} className="p-4 space-y-3 bg-white border-[#E6E8E5]">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded">
+                  <span className="text-xs font-bold text-[#21845B] bg-[#EAF4EE] px-2.5 py-0.5 rounded">
                     {pump.brand}
                   </span>
-                  <span className="text-xs font-semibold text-slate-600">{pump.distanceKm} km away</span>
+                  <span className="text-xs font-semibold text-[#687474]">{pump.distanceKm} km away</span>
                 </div>
                 <div>
-                  <h4 className="font-bold text-sm text-slate-900">{pump.name}</h4>
-                  <p className="text-xs text-slate-500 mt-1 line-clamp-2">{pump.address}</p>
+                  <h4 className="font-bold text-sm text-[#252B2B]">{pump.name}</h4>
+                  <p className="text-xs text-[#687474] mt-1 line-clamp-2">{pump.address}</p>
                 </div>
-                <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
-                  <span className="text-slate-500">{pump.contactNumber}</span>
+                <div className="pt-2 border-t border-[#E6E8E5] flex items-center justify-between text-xs">
+                  <span className="text-[#687474]">{pump.contactNumber}</span>
                   <a
                     href={`https://maps.google.com/?q=${pump.lat},${pump.lng}`}
                     target="_blank"
                     rel="noreferrer"
-                    className="font-bold text-brand-600 hover:text-brand-800 flex items-center gap-1"
+                    className="font-bold text-[#0F766E] hover:text-[#0D645E] flex items-center gap-1"
                   >
                     <span>Maps</span>
                     <Navigation className="w-3.5 h-3.5" />

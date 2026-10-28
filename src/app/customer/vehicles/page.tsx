@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Car, Bike, Plus, Trash2, ArrowLeft, CheckCircle2 } from 'lucide-react';
+import { Car, Bike, Plus, Trash2, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
@@ -59,46 +59,46 @@ export default function CustomerVehiclesPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 py-10 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#FAF9F6] text-[#252B2B] py-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto space-y-6">
         <div className="flex items-center justify-between">
-          <Link href="/customer/dashboard" className="text-xs font-bold text-slate-500 hover:text-slate-800 flex items-center gap-1">
+          <Link href="/customer/dashboard" className="text-xs font-bold text-[#687474] hover:text-[#0F766E] flex items-center gap-1 transition-colors">
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Dashboard</span>
           </Link>
-          <Button variant="primary" size="sm" onClick={() => setIsModalOpen(true)} leftIcon={<Plus className="w-4 h-4" />}>
+          <Button variant="primary" size="sm" onClick={() => setIsModalOpen(true)} className="bg-[#0F766E] hover:bg-[#0D645E]" leftIcon={<Plus className="w-4 h-4" />}>
             Add New Vehicle
           </Button>
         </div>
 
         <div>
-          <h1 className="text-2xl font-black text-slate-900">Saved Vehicles</h1>
-          <p className="text-xs text-slate-500">Manage multiple vehicles for rapid 1-click roadside dispatch.</p>
+          <h1 className="text-2xl font-black text-[#252B2B]">Saved Vehicles</h1>
+          <p className="text-xs text-[#687474]">Manage multiple vehicles for rapid 1-click roadside dispatch.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {vehicles.map((v) => (
-            <Card key={v.id} className="p-5 flex flex-col justify-between space-y-4">
+            <Card key={v.id} className="p-5 flex flex-col justify-between space-y-4 bg-white border-[#E6E8E5]">
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-2xl bg-brand-50 text-brand-700 flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-2xl bg-[#EAF5F2] text-[#0F766E] flex items-center justify-center">
                     {v.type === 'bike' ? <Bike className="w-6 h-6" /> : <Car className="w-6 h-6" />}
                   </div>
                   <div>
-                    <h3 className="font-extrabold text-base text-slate-900">{v.make} {v.model}</h3>
-                    <p className="text-xs font-mono font-bold text-slate-500">{v.license_plate}</p>
+                    <h3 className="font-extrabold text-base text-[#252B2B]">{v.make} {v.model}</h3>
+                    <p className="text-xs font-mono font-bold text-[#687474]">{v.license_plate}</p>
                   </div>
                 </div>
                 <Badge variant="info">{v.fuel_type.toUpperCase()}</Badge>
               </div>
 
-              <div className="flex items-center justify-between pt-3 border-t border-slate-100 text-xs text-slate-600">
-                <span>Model Year: <strong>{v.year}</strong></span>
+              <div className="flex items-center justify-between pt-3 border-t border-[#E6E8E5] text-xs text-[#687474]">
+                <span>Model Year: <strong className="text-[#252B2B]">{v.year}</strong></span>
                 <button
                   onClick={() => handleDelete(v.id)}
-                  className="text-rose-600 hover:text-rose-800 p-1 flex items-center gap-1 font-semibold"
+                  className="text-[#B91C35] hover:text-[#97152B] p-1 flex items-center gap-1 font-semibold transition-colors"
                 >
-                  <Trash2 className="w-4 h-4" />
+                  <Trash2 className="w-3.5 h-3.5" />
                   <span>Remove</span>
                 </button>
               </div>
@@ -106,67 +106,69 @@ export default function CustomerVehiclesPage() {
           ))}
         </div>
 
-        {/* Modal for adding vehicle */}
-        <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Register Vehicle for SOS Dispatch">
-          <form onSubmit={handleAddVehicle} className="space-y-4 text-xs">
+        {/* Modal */}
+        <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Register New Vehicle">
+          <form onSubmit={handleAddVehicle} className="space-y-4 text-xs text-[#252B2B]">
             <div>
-              <label className="block font-semibold text-slate-700 mb-1">Vehicle Type</label>
+              <label className="block font-semibold mb-1">Vehicle Classification</label>
               <select
                 value={type}
                 onChange={(e) => setType(e.target.value as any)}
-                className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                className="w-full px-3 py-2 bg-[#FAF9F6] border border-[#E6E8E5] rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0F766E]"
               >
-                <option value="car">Car (Hatchback / Sedan)</option>
-                <option value="suv">SUV</option>
-                <option value="bike">Motorcycle / Scooter</option>
+                <option value="car">Hatchback / Sedan</option>
+                <option value="suv">SUV / MUV</option>
+                <option value="bike">Two-Wheeler / Motorcycle</option>
                 <option value="ev">Electric Vehicle (EV)</option>
-                <option value="commercial">Commercial Vehicle</option>
+                <option value="commercial">Light Commercial Vehicle</option>
               </select>
             </div>
 
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block font-semibold text-slate-700 mb-1">Manufacturer / Make</label>
+                <label className="block font-semibold mb-1">Make / Brand</label>
                 <input
                   type="text"
                   value={make}
                   onChange={(e) => setMake(e.target.value)}
                   placeholder="e.g. Hyundai, Tata, Honda"
                   required
-                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                  className="w-full px-3 py-2 bg-[#FAF9F6] border border-[#E6E8E5] rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0F766E]"
                 />
               </div>
+
               <div>
-                <label className="block font-semibold text-slate-700 mb-1">Model</label>
+                <label className="block font-semibold mb-1">Model Name</label>
                 <input
                   type="text"
                   value={model}
                   onChange={(e) => setModel(e.target.value)}
                   placeholder="e.g. Creta, Nexon, Activa"
                   required
-                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                  className="w-full px-3 py-2 bg-[#FAF9F6] border border-[#E6E8E5] rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0F766E]"
                 />
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block font-semibold text-slate-700 mb-1">License Plate Number</label>
+                <label className="block font-semibold mb-1">License Plate Number</label>
                 <input
                   type="text"
                   value={licensePlate}
                   onChange={(e) => setLicensePlate(e.target.value)}
-                  placeholder="KA 05 MN 4821"
+                  placeholder="e.g. KA 05 MN 4821"
                   required
-                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl uppercase font-mono"
+                  className="w-full px-3 py-2 bg-[#FAF9F6] border border-[#E6E8E5] rounded-xl uppercase font-mono tracking-wider focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0F766E]"
                 />
               </div>
+
               <div>
-                <label className="block font-semibold text-slate-700 mb-1">Fuel Type</label>
+                <label className="block font-semibold mb-1">Fuel Type</label>
                 <select
                   value={fuelType}
                   onChange={(e) => setFuelType(e.target.value as any)}
-                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl"
+                  className="w-full px-3 py-2 bg-[#FAF9F6] border border-[#E6E8E5] rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0F766E]"
                 >
                   <option value="petrol">Petrol</option>
                   <option value="diesel">Diesel</option>
@@ -176,11 +178,11 @@ export default function CustomerVehiclesPage() {
               </div>
             </div>
 
-            <div className="pt-2 flex justify-end gap-2">
+            <div className="flex justify-end gap-2 pt-2">
               <Button type="button" variant="outline" size="sm" onClick={() => setIsModalOpen(false)}>
                 Cancel
               </Button>
-              <Button type="submit" variant="primary" size="sm">
+              <Button type="submit" variant="primary" size="sm" className="bg-[#0F766E] hover:bg-[#0D645E]">
                 Save Vehicle
               </Button>
             </div>

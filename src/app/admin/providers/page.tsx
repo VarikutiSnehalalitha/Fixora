@@ -68,36 +68,36 @@ export default function AdminProvidersPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 py-10 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#FAF9F6] py-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto space-y-6">
-        <Link href="/admin" className="text-xs font-bold text-slate-500 hover:text-slate-800 flex items-center gap-1">
+        <Link href="/admin" className="text-xs font-bold text-[#687474] hover:text-[#252B2B] flex items-center gap-1 transition-colors">
           <ArrowLeft className="w-4 h-4" />
           <span>Back to Admin Console</span>
         </Link>
 
         <div>
-          <h1 className="text-2xl font-black text-slate-900">Provider Verifications & Applications</h1>
-          <p className="text-xs text-slate-500">
+          <h1 className="text-2xl font-black text-[#252B2B]">Provider Verifications & Applications</h1>
+          <p className="text-xs text-[#687474]">
             Review identity documents, licenses and certifications before granting dispatch eligibility.
           </p>
         </div>
 
         <div className="space-y-4">
           {providers.map((p) => (
-            <Card key={p.id} className="p-6 space-y-4 bg-white">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-3">
+            <Card key={p.id} className="p-6 space-y-4 bg-white border border-[#E6E8E5]">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#E6E8E5] pb-3">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-2xl bg-brand-50 text-brand-700 flex items-center justify-center font-bold text-lg">
+                  <div className="w-12 h-12 rounded-2xl bg-[#EAF5F2] text-[#0F766E] flex items-center justify-center font-bold text-lg">
                     {p.name.charAt(0)}
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
-                      <h3 className="font-extrabold text-base text-slate-900">{p.name}</h3>
-                      <Badge variant={p.verification_status === 'verified' ? 'success' : p.verification_status === 'pending' ? 'warning' : 'emergency'}>
+                      <h3 className="font-extrabold text-base text-[#252B2B]">{p.name}</h3>
+                      <Badge variant={p.verification_status === 'verified' ? 'success' : p.verification_status === 'pending' ? 'warning' : 'danger'}>
                         {p.verification_status.toUpperCase()}
                       </Badge>
                     </div>
-                    <p className="text-xs text-slate-500 font-semibold">{p.business_name} • {p.city}</p>
+                    <p className="text-xs text-[#687474] font-semibold">{p.business_name} • {p.city}</p>
                   </div>
                 </div>
 
@@ -116,22 +116,22 @@ export default function AdminProvidersPage() {
 
               {/* Details & Documents */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-                <div className="p-3 bg-slate-50 rounded-xl space-y-1">
-                  <span className="font-bold text-slate-500 uppercase text-[10px]">Contact Info</span>
-                  <div className="font-bold text-slate-800">{p.phone}</div>
-                  <div className="text-slate-500">{p.email}</div>
+                <div className="p-3 bg-[#FAF9F6] rounded-xl space-y-1 border border-[#E6E8E5]">
+                  <span className="font-bold text-[#687474] uppercase text-[10px]">Contact Info</span>
+                  <div className="font-bold text-[#252B2B]">{p.phone}</div>
+                  <div className="text-[#687474]">{p.email}</div>
                 </div>
 
-                <div className="p-3 bg-slate-50 rounded-xl space-y-1">
-                  <span className="font-bold text-slate-500 uppercase text-[10px]">Specialization</span>
-                  <div className="font-bold text-slate-800 capitalize">{p.provider_type.replace('_', ' ')}</div>
-                  <div className="text-slate-500">{p.skills.join(', ')}</div>
+                <div className="p-3 bg-[#FAF9F6] rounded-xl space-y-1 border border-[#E6E8E5]">
+                  <span className="font-bold text-[#687474] uppercase text-[10px]">Specialization</span>
+                  <div className="font-bold text-[#252B2B] capitalize">{p.provider_type.replace('_', ' ')}</div>
+                  <div className="text-[#687474]">{p.skills.join(', ')}</div>
                 </div>
 
-                <div className="p-3 bg-slate-50 rounded-xl space-y-1">
-                  <span className="font-bold text-slate-500 uppercase text-[10px]">Submitted Document</span>
+                <div className="p-3 bg-[#FAF9F6] rounded-xl space-y-1 border border-[#E6E8E5]">
+                  <span className="font-bold text-[#687474] uppercase text-[10px]">Submitted Document</span>
                   {p.documents.map((d) => (
-                    <div key={d.id} className="font-mono font-bold text-slate-800">
+                    <div key={d.id} className="font-mono font-bold text-[#252B2B]">
                       {d.document_type.toUpperCase()}: {d.document_number}
                     </div>
                   ))}
@@ -141,7 +141,7 @@ export default function AdminProvidersPage() {
                       e.preventDefault();
                       alert('Displaying verified government identity document modal (Simulated)');
                     }}
-                    className="text-brand-600 hover:underline font-bold block mt-1"
+                    className="text-[#0F766E] hover:underline font-bold block mt-1"
                   >
                     View Document File
                   </a>

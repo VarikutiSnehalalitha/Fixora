@@ -4,14 +4,10 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import {
-  Wrench,
   Navigation,
   Phone,
-  ShieldCheck,
   CheckCircle2,
-  AlertTriangle,
   ArrowLeft,
-  Camera,
   Plus,
   Trash2,
   FileText
@@ -49,7 +45,7 @@ export default function ProviderJobDetailPage() {
 
   if (!booking) {
     return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center p-6 text-slate-500">
+      <div className="min-h-screen bg-[#FAF9F6] flex items-center justify-center p-6 text-[#687474]">
         Loading job details...
       </div>
     );
@@ -82,7 +78,7 @@ export default function ProviderJobDetailPage() {
         body: JSON.stringify({
           status: 'ARRIVED',
           otp: arrivalOtpInput,
-          note: 'Technician verified arrival via customer OTP'
+          note: 'Specialist verified arrival via customer OTP'
         })
       });
       const data = await res.json();
@@ -158,22 +154,22 @@ export default function ProviderJobDetailPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 py-10 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#FAF9F6] text-[#252B2B] py-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto space-y-6">
-        <Link href="/provider/jobs" className="text-xs font-bold text-slate-500 hover:text-slate-800 flex items-center gap-1">
+        <Link href="/provider/jobs" className="text-xs font-bold text-[#687474] hover:text-[#0F766E] flex items-center gap-1 transition-colors">
           <ArrowLeft className="w-4 h-4" />
           <span>Back to Jobs</span>
         </Link>
 
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-slate-200">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-[#E6E8E5] shadow-sm">
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <span className="text-xs font-mono font-bold text-slate-500">{booking.booking_number}</span>
+              <span className="text-xs font-mono font-bold text-[#687474]">{booking.booking_number}</span>
               <Badge status={booking.status} />
             </div>
-            <h1 className="text-xl sm:text-2xl font-black text-slate-900">{booking.issue_title}</h1>
-            <p className="text-xs text-slate-500 mt-1">Customer: {booking.customer_name} • {booking.customer_phone}</p>
+            <h1 className="text-xl sm:text-2xl font-black text-[#252B2B]">{booking.issue_title}</h1>
+            <p className="text-xs text-[#687474] mt-1">Customer: {booking.customer_name} • {booking.customer_phone}</p>
           </div>
 
           <div className="flex items-center gap-2">
@@ -182,12 +178,12 @@ export default function ProviderJobDetailPage() {
               target="_blank"
               rel="noreferrer"
             >
-              <Button variant="outline" size="sm" leftIcon={<Navigation className="w-3.5 h-3.5" />}>
+              <Button variant="outline" size="sm" leftIcon={<Navigation className="w-3.5 h-3.5 text-[#0F766E]" />}>
                 GPS Directions
               </Button>
             </a>
             <a href={`tel:${booking.customer_phone}`}>
-              <Button variant="primary" size="sm" leftIcon={<Phone className="w-3.5 h-3.5" />}>
+              <Button variant="primary" size="sm" className="bg-[#0F766E] hover:bg-[#0D645E]" leftIcon={<Phone className="w-3.5 h-3.5" />}>
                 Call Customer
               </Button>
             </a>
@@ -195,22 +191,23 @@ export default function ProviderJobDetailPage() {
         </div>
 
         {/* WORKFLOW ACTION TERMINAL */}
-        <Card className="space-y-6 p-6 border-l-4 border-l-brand-600 bg-white">
-          <h2 className="text-base font-extrabold text-slate-900 border-b border-slate-100 pb-3 flex items-center justify-between">
+        <Card className="space-y-6 p-6 border-l-4 border-l-[#0F766E] bg-white border-[#E6E8E5]">
+          <h2 className="text-base font-extrabold text-[#252B2B] border-b border-[#E6E8E5] pb-3 flex items-center justify-between">
             <span>Specialist Action Workflow Terminal</span>
-            <span className="text-xs font-semibold text-brand-600">Step Progression</span>
+            <span className="text-xs font-semibold text-[#0F766E]">Step Progression</span>
           </h2>
 
           {/* 1. If assigned -> Mark En Route */}
           {booking.status === 'PROVIDER_ASSIGNED' && (
             <div className="space-y-3">
-              <p className="text-xs text-slate-600">
+              <p className="text-xs text-[#687474]">
                 You have been assigned this emergency task. Click below when you depart with your recovery tools:
               </p>
               <Button
                 variant="primary"
                 size="lg"
                 onClick={() => handleUpdateStatus('PROVIDER_EN_ROUTE', 'Provider departed shop with tools')}
+                className="bg-[#0F766E] hover:bg-[#0D645E]"
               >
                 Mark Departure (En Route to Customer)
               </Button>
@@ -220,12 +217,9 @@ export default function ProviderJobDetailPage() {
           {/* 2. If En Route -> Ask Customer for 4-digit Arrival OTP */}
           {booking.status === 'PROVIDER_EN_ROUTE' && (
             <form onSubmit={handleVerifyArrivalOtp} className="space-y-4">
-              <div className="p-4 bg-slate-900 text-white rounded-2xl border border-slate-800 space-y-1">
-                <div className="text-xs font-bold text-white flex items-center gap-1.5">
-                  <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                  <span>Arrived at Customer Location?</span>
-                </div>
-                <p className="text-xs text-slate-300">
+              <div className="p-4 bg-[#EAF5F2] rounded-2xl border border-[#A7D9CD] space-y-1">
+                <div className="text-xs font-bold text-[#0F766E]">Arrived at Customer Location?</div>
+                <p className="text-xs text-[#525D5D]">
                   Ask the customer for their 4-digit arrival verification code shown on their app screen.
                 </p>
               </div>
@@ -237,9 +231,9 @@ export default function ProviderJobDetailPage() {
                   value={arrivalOtpInput}
                   onChange={(e) => setArrivalOtpInput(e.target.value)}
                   placeholder="Enter 4-Digit Arrival OTP"
-                  className="px-3.5 py-2.5 text-base font-mono font-bold tracking-widest text-center bg-slate-50 border border-slate-300 rounded-xl focus:bg-white"
+                  className="px-3.5 py-2.5 text-base font-mono font-bold tracking-widest text-center bg-[#FAF9F6] border border-[#E6E8E5] rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0F766E]"
                 />
-                <Button type="submit" variant="primary" size="md">
+                <Button type="submit" variant="primary" size="md" className="bg-[#0F766E] hover:bg-[#0D645E]">
                   Verify & Check In
                 </Button>
               </div>
@@ -249,14 +243,15 @@ export default function ProviderJobDetailPage() {
           {/* 3. If Arrived -> Begin Diagnosis */}
           {booking.status === 'ARRIVED' && (
             <div className="space-y-3">
-              <div className="p-3 bg-emerald-50 text-emerald-800 text-xs rounded-xl flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+              <div className="p-3 bg-[#EAF4EE] text-[#21845B] text-xs rounded-xl border border-[#B8DEC9] flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-[#21845B] shrink-0" />
                 <span>Arrival OTP verified. You are checked in at the customer location.</span>
               </div>
               <Button
                 variant="primary"
                 size="md"
                 onClick={() => handleUpdateStatus('DIAGNOSING', 'Beginning physical inspection and diagnostics')}
+                className="bg-[#0F766E] hover:bg-[#0D645E]"
               >
                 Begin Physical Diagnosis
               </Button>
@@ -266,27 +261,27 @@ export default function ProviderJobDetailPage() {
           {/* 4. If Diagnosing -> Form to submit Itemized Quote */}
           {booking.status === 'DIAGNOSING' && (
             <form onSubmit={handleSubmitQuote} className="space-y-5">
-              <div className="p-3 bg-blue-50 text-blue-900 text-xs rounded-xl">
+              <div className="p-3 bg-[#EAF5F2] text-[#083B38] text-xs rounded-xl border border-[#A7D9CD]">
                 Diagnostic mode active. Enter parts and labour estimates for customer digital approval:
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">Diagnosis Notes</label>
+                <label className="block text-xs font-semibold text-[#252B2B] mb-1">Diagnosis Notes</label>
                 <textarea
                   rows={2}
                   value={diagnosisNotes}
                   onChange={(e) => setDiagnosisNotes(e.target.value)}
-                  className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl"
+                  className="w-full px-3 py-2 text-xs bg-[#FAF9F6] border border-[#E6E8E5] rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0F766E]"
                 ></textarea>
               </div>
 
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <label className="block text-xs font-semibold text-slate-700">Itemized Spare Parts & Labour</label>
+                  <label className="block text-xs font-semibold text-[#252B2B]">Itemized Spare Parts & Labour</label>
                   <button
                     type="button"
                     onClick={handleAddQuoteItem}
-                    className="text-xs text-brand-600 hover:text-brand-800 font-bold flex items-center gap-1"
+                    className="text-xs text-[#0F766E] hover:text-[#0D645E] font-bold flex items-center gap-1"
                   >
                     <Plus className="w-3.5 h-3.5" /> Add Item
                   </button>
@@ -303,7 +298,7 @@ export default function ProviderJobDetailPage() {
                           updated[idx].description = e.target.value;
                           setQuoteItems(updated);
                         }}
-                        className="flex-1 px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg"
+                        className="flex-1 px-3 py-2 bg-[#FAF9F6] border border-[#E6E8E5] rounded-lg focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0F766E]"
                       />
                       <select
                         value={item.type}
@@ -312,7 +307,7 @@ export default function ProviderJobDetailPage() {
                           updated[idx].type = e.target.value as any;
                           setQuoteItems(updated);
                         }}
-                        className="px-2 py-2 bg-slate-50 border border-slate-200 rounded-lg"
+                        className="px-2 py-2 bg-[#FAF9F6] border border-[#E6E8E5] rounded-lg focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0F766E]"
                       >
                         <option value="part">Part</option>
                         <option value="labour">Labour</option>
@@ -325,12 +320,12 @@ export default function ProviderJobDetailPage() {
                           updated[idx].unit_price = Number(e.target.value);
                           setQuoteItems(updated);
                         }}
-                        className="w-24 px-2 py-2 bg-slate-50 border border-slate-200 rounded-lg"
+                        className="w-24 px-2 py-2 bg-[#FAF9F6] border border-[#E6E8E5] rounded-lg focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0F766E]"
                       />
                       <button
                         type="button"
                         onClick={() => handleRemoveQuoteItem(idx)}
-                        className="p-1 text-rose-500 hover:text-rose-700"
+                        className="p-1 text-[#B91C35] hover:text-[#97152B]"
                       >
                         <Trash2 className="w-4 h-4" />
                       </button>
@@ -339,7 +334,7 @@ export default function ProviderJobDetailPage() {
                 </div>
               </div>
 
-              <Button type="submit" variant="primary" size="md" leftIcon={<FileText className="w-4 h-4" />}>
+              <Button type="submit" variant="primary" size="md" className="bg-[#0F766E] hover:bg-[#0D645E]" leftIcon={<FileText className="w-4 h-4" />}>
                 Submit Quote for Customer Approval
               </Button>
             </form>
@@ -347,9 +342,9 @@ export default function ProviderJobDetailPage() {
 
           {/* 5. If Quote Pending -> Waiting for customer */}
           {booking.status === 'QUOTE_PENDING' && (
-            <div className="p-4 bg-amber-50 rounded-xl border border-amber-200 text-xs text-amber-900 space-y-2">
+            <div className="p-4 bg-[#FEF9EE] rounded-xl border border-[#FBE2AC] text-xs text-[#753E0A] space-y-2">
               <div className="font-bold flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-amber-500 animate-ping"></span>
+                <span className="w-2 h-2 rounded-full bg-[#D99119] animate-ping"></span>
                 <span>Estimate Dispatched</span>
               </div>
               <p>Waiting for the customer to review and tap approve on their device screen.</p>
@@ -359,14 +354,15 @@ export default function ProviderJobDetailPage() {
           {/* 6. If Quote Approved -> Start Work */}
           {booking.status === 'QUOTE_APPROVED' && (
             <div className="space-y-3">
-              <div className="p-3 bg-emerald-50 text-emerald-900 text-xs rounded-xl flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+              <div className="p-3 bg-[#EAF4EE] text-[#21845B] text-xs rounded-xl border border-[#B8DEC9] flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-[#21845B] shrink-0" />
                 <span>Customer approved the quote of ₹{booking.total_amount}.</span>
               </div>
               <Button
                 variant="primary"
                 size="md"
                 onClick={() => handleUpdateStatus('IN_PROGRESS', 'Beginning repair procedure')}
+                className="bg-[#0F766E] hover:bg-[#0D645E]"
               >
                 Start Repair Work
               </Button>
@@ -376,9 +372,9 @@ export default function ProviderJobDetailPage() {
           {/* 7. If In Progress -> Complete with Completion OTP */}
           {booking.status === 'IN_PROGRESS' && (
             <form onSubmit={handleVerifyCompletionOtp} className="space-y-4">
-              <div className="p-4 bg-blue-50 rounded-2xl border border-blue-100 space-y-1">
-                <div className="text-xs font-bold text-blue-900">Finished the Repair Work?</div>
-                <p className="text-xs text-blue-700">
+              <div className="p-4 bg-[#EAF5F2] rounded-2xl border border-[#A7D9CD] space-y-1">
+                <div className="text-xs font-bold text-[#0F766E]">Finished the Repair Work?</div>
+                <p className="text-xs text-[#525D5D]">
                   Ask customer for their final 4-digit completion code to close the job and release funds.
                 </p>
               </div>
@@ -390,9 +386,9 @@ export default function ProviderJobDetailPage() {
                   value={completionOtpInput}
                   onChange={(e) => setCompletionOtpInput(e.target.value)}
                   placeholder="Enter Completion OTP"
-                  className="px-3.5 py-2.5 text-base font-mono font-bold tracking-widest text-center bg-slate-50 border border-slate-300 rounded-xl focus:bg-white"
+                  className="px-3.5 py-2.5 text-base font-mono font-bold tracking-widest text-center bg-[#FAF9F6] border border-[#E6E8E5] rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0F766E]"
                 />
-                <Button type="submit" variant="primary" size="md">
+                <Button type="submit" variant="primary" size="md" className="bg-[#0F766E] hover:bg-[#0D645E]">
                   Verify & Finish Job
                 </Button>
               </div>
@@ -401,12 +397,12 @@ export default function ProviderJobDetailPage() {
 
           {/* 8. If Completed */}
           {booking.status === 'COMPLETED' && (
-            <div className="p-4 bg-emerald-50 rounded-2xl border border-emerald-200 text-xs text-emerald-900 flex items-center justify-between">
+            <div className="p-4 bg-[#EAF4EE] rounded-2xl border border-[#B8DEC9] text-xs text-[#21845B] flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
+                <CheckCircle2 className="w-5 h-5 text-[#21845B] shrink-0" />
                 <span>Job completed, verified with OTP, and customer billed.</span>
               </div>
-              <span className="font-extrabold text-sm text-emerald-800">
+              <span className="font-extrabold text-sm text-[#21845B]">
                 Payout: ₹{booking.provider_payout}
               </span>
             </div>

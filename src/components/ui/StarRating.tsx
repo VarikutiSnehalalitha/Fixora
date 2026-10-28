@@ -43,10 +43,10 @@ export const StarRating: React.FC<StarRatingProps> = ({
               <Star
                 className={`${sizeClasses[size]} ${
                   isFilled
-                    ? 'text-amber-400 fill-amber-400'
+                    ? 'text-[#D99119] fill-[#D99119]'
                     : isPartiallyFilled
-                    ? 'text-amber-400 fill-amber-400/50'
-                    : 'text-slate-300'
+                    ? 'text-[#D99119] fill-[#D99119]/50'
+                    : 'text-[#E6E8E5]'
                 }`}
               />
             </button>
@@ -54,7 +54,7 @@ export const StarRating: React.FC<StarRatingProps> = ({
         })}
       </div>
       {showText && (
-        <span className="text-xs font-semibold text-slate-700 ml-1">
+        <span className="text-xs font-semibold text-[#252B2B] ml-1">
           {rating.toFixed(1)}
         </span>
       )}

@@ -5,15 +5,27 @@
 @import "leaflet/dist/leaflet.css";
 
 :root {
-  --background: #f8fafc;
-  --foreground: #0f172a;
+  --background: #FAF9F6;
+  --foreground: #252B2B;
+  --surface: #FFFFFF;
+  --primary: #0F766E;
+  --primary-hover: #0D645E;
+  --primary-light: #EAF5F2;
+  --sage: #DDEFE7;
+  --sand: #F3EBDD;
+  --border: #E6E8E5;
+  --secondary: #687474;
+  --success: #21845B;
+  --warning: #D99119;
+  --danger: #B91C35;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* Custom scrollbars */
@@ -22,14 +34,14 @@ body {
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #FAF9F6;
 }
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #D5D8D3;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #A8ADA5;
 }
 
 /* Leaflet fix */
@@ -40,13 +52,13 @@ body {
   z-index: 20 !important;
 }
 
-/* Pulse animation for emergency rescue actions */
-@keyframes pulse-ring {
-  0% { transform: scale(0.98); box-shadow: 0 0 0 0 rgba(153, 27, 27, 0.6); }
-  70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(153, 27, 27, 0); }
-  100% { transform: scale(0.98); box-shadow: 0 0 0 0 rgba(153, 27, 27, 0); }
+/* Subtle, calm focus & action pulse animation (no aggressive red glow) */
+@keyframes subtle-pulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(15, 118, 110, 0.35); }
+  70% { transform: scale(1.01); box-shadow: 0 0 0 8px rgba(15, 118, 110, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(15, 118, 110, 0); }
 }
 
 .emergency-pulse {
-  animation: pulse-ring 2.2s infinite;
+  animation: subtle-pulse 2.5s infinite;
 }
